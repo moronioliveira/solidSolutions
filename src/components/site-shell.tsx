@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { useRef, useState, type ReactNode } from "react";
 import { ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import symbol from "@/assets/solid-solutions-symbol.jpg.asset.json";
-import logo from "@/assets/solid-solutions-logo.jpg.asset.json";
+import symbol from "@/assets/solid-solutions-symbol.jpg";
+import logo from "@/assets/solid-solutions-logo.jpg";
 import { useSiteMotion } from "@/hooks/use-site-motion";
 import { whatsappUrl } from "@/lib/commercial";
 
@@ -19,14 +19,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return <div ref={rootRef} className="site-motion-root">
     <div className="reading-progress" aria-hidden="true" />
     <header className="site-header"><div className="site-container header-inner">
-      <Link to="/" className="brand" aria-label="Solid Solutions — início"><img src={symbol.url} alt="" width={44} height={44} /><span>SOLID<span>SOLUTIONS</span></span></Link>
+      <Link to="/" className="brand" aria-label="Solid Solutions — início"><img src={symbol} alt="" width={44} height={44} /><span>SOLID<span>SOLUTIONS</span></span></Link>
       <nav className="desktop-nav" aria-label="Navegação principal">{navigation.map(item => <Link key={item.to} to={item.to} activeProps={{ className: "nav-active" }} activeOptions={{ exact: true }}>{item.label}</Link>)}</nav>
       <Button asChild variant="outline" className="header-cta"><Link to="/contato">Vamos conversar <ArrowUpRight /></Link></Button>
       <Button variant="ghost" size="icon" className="mobile-menu-toggle" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
     </div>{menuOpen && <nav className="mobile-nav" aria-label="Navegação móvel">{[...navigation, { label: "Vamos conversar", to: "/contato" } as const].map(item => <Link key={item.to} to={item.to} onClick={() => setMenuOpen(false)}>{item.label}<ArrowUpRight size={16} /></Link>)}</nav>}</header>
     <main>{children}</main>
     <Button asChild size="icon" className="whatsapp-float"><a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Solid Solutions pelo WhatsApp" title="Conversar pelo WhatsApp"><MessageCircle /><span className="whatsapp-float-label" aria-hidden="true">Vamos conversar</span></a></Button>
-    <footer className="site-footer"><div className="site-container footer-top"><img src={logo.url} alt="Solid Solutions" loading="lazy" width={1920} height={1080} /><div><span className="eyebrow">IDEIAS AMBICIOSAS. SOLUÇÕES SÓLIDAS.</span><p>O próximo grande projeto<br />pode ser o seu.</p><Link to="/contato">Vamos criar juntos <ArrowUpRight size={20} /></Link></div></div><div className="site-container footer-bottom"><span>© 2026 Solid Solutions</span><span>Design com propósito. Código com precisão.</span><Link to="/contato">Contato <ArrowUpRight size={14} /></Link></div></footer>
+    <footer className="site-footer"><div className="site-container footer-top"><img src={logo} alt="Solid Solutions" loading="lazy" width={1920} height={1080} /><div><span className="eyebrow">IDEIAS AMBICIOSAS. SOLUÇÕES SÓLIDAS.</span><p>O próximo grande projeto<br />pode ser o seu.</p><Link to="/contato">Vamos criar juntos <ArrowUpRight size={20} /></Link></div></div><div className="site-container footer-bottom"><span>© 2026 Solid Solutions</span><span>Design com propósito. Código com precisão.</span><Link to="/contato">Contato <ArrowUpRight size={14} /></Link></div></footer>
   </div>;
 }
 
