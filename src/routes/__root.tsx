@@ -88,13 +88,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0b0a08" },
+      { name: "google-site-verification", content: "vlOEqnrNSAGnh_gmEB8MQAIhVAYfmyJrEywKjV-gNRM" },
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({
-      "@context": "https://schema.org", "@type": "ProfessionalService", name: "Solid Solutions",
-      url: "https://solid-solutions-portifolio.vercel.app", image: "https://solid-solutions-portifolio.vercel.app/og-image.jpg",
-      description: "Criação de sites institucionais e landing pages profissionais.", areaServed: "BR",
-      telephone: "+55 86 99429-1131", serviceType: ["Sites institucionais", "Landing pages", "Google Ads", "SEO local"],
-    }) }],
+    scripts: [{
+      type: "application/ld+json", children: JSON.stringify({
+        "@context": "https://schema.org", "@type": "ProfessionalService", name: "Solid Solutions",
+        url: "https://solid-solutions-portifolio.vercel.app", image: "https://solid-solutions-portifolio.vercel.app/og-image.jpg",
+        description: "Criação de sites institucionais e landing pages profissionais.", areaServed: "BR",
+        telephone: "+55 86 99429-1131", serviceType: ["Sites institucionais", "Landing pages", "Google Ads", "SEO local"],
+      })
+    }],
     links: [
       {
         rel: "stylesheet",
