@@ -1,15 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { ArrowUpRight, Check, CheckCircle2, Loader2, MessageCircle } from "lucide-react";
 import { SiteShell, PageIntro, pageHead } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { contactSchema } from "@/lib/contact-schema";
-import { submitContact } from "@/lib/contact.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { whatsappUrl } from "@/lib/commercial";
 export const Route = createFileRoute("/contato")({ head: () => pageHead("Vamos criar seu projeto", "Conte sua ideia à Solid Solutions e solicite uma proposta para seu site ou landing page. Vamos construir sua próxima experiência digital.", "/contato"), component: Contact });
 function Contact() {
-  const submit = useServerFn(submitContact);
   const [pending, setPending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
@@ -19,7 +17,13 @@ function Contact() {
     const parsed = contactSchema.safeParse(Object.fromEntries(form));
     if (!parsed.success) { setError(parsed.error.issues[0]?.message ?? "Confira os campos."); return; }
     setPending(true); setError("");
-    try { const result = await submit({ data: parsed.data }); if (result.ok) setSent(true); else setError(result.error ?? "Não foi possível enviar."); }
+    try {
+      if (parsed.data.website) { setSent(true); return; }
+      const { website: _w, ...row } = parsed.data;
+      const { error: dbError } = await supabase.from("contact_submissions").insert(row);
+      if (!dbError) setSent(true);
+      else setError(dbError.message.includes("Aguarde") ? "Aguarde um minuto antes de enviar novamente." : "Não foi possível enviar. Tente novamente em instantes.");
+    }
     catch { setError("Não foi possível enviar. Tente novamente em instantes."); }
     finally { setPending(false); }
   }
