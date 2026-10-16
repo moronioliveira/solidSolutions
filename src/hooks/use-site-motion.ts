@@ -12,7 +12,7 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
       dispose();
       if (!root || preference.matches) return;
       const targets = Array.from(root.querySelectorAll<HTMLElement>(
-        ".section-heading, .section > .eyebrow, .section > h2, .project, .solution, .process-step, .concept-note, .contact-band-inner > *, .footer-top > *, .page-intro > *, .about-content > *, .contact-aside, .capability-inner > span",
+        ".section-heading, .section > .eyebrow, .section > h2, .project, .solution, .process-step, .concept-note, .contact-band-inner > *, .footer-top > *, .page-intro > *, .about-content > *, .contact-aside, .capability-inner > span, .plan-card, .management-band, .plans-details, .plans-help",
       ));
       const observer = new IntersectionObserver(entries => {
         for (const entry of entries) {
