@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { useRef, useState, type ReactNode } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import symbol from "@/assets/solid-solutions-symbol.jpg.asset.json";
 import logo from "@/assets/solid-solutions-logo.jpg.asset.json";
 import { useSiteMotion } from "@/hooks/use-site-motion";
+import { whatsappUrl } from "@/lib/commercial";
 
 const navigation = [
   { label: "Início", to: "/" }, { label: "Projetos", to: "/projetos" },
@@ -24,6 +25,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <Button variant="ghost" size="icon" className="mobile-menu-toggle" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button>
     </div>{menuOpen && <nav className="mobile-nav" aria-label="Navegação móvel">{[...navigation, { label: "Vamos conversar", to: "/contato" } as const].map(item => <Link key={item.to} to={item.to} onClick={() => setMenuOpen(false)}>{item.label}<ArrowUpRight size={16} /></Link>)}</nav>}</header>
     <main>{children}</main>
+    <Button asChild size="icon" className="whatsapp-float"><a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Solid Solutions pelo WhatsApp" title="Conversar pelo WhatsApp"><MessageCircle /><span className="whatsapp-float-label" aria-hidden="true">Vamos conversar</span></a></Button>
     <footer className="site-footer"><div className="site-container footer-top"><img src={logo.url} alt="Solid Solutions" loading="lazy" width={1920} height={1080} /><div><span className="eyebrow">IDEIAS AMBICIOSAS. SOLUÇÕES SÓLIDAS.</span><p>O próximo grande projeto<br />pode ser o seu.</p><Link to="/contato">Vamos criar juntos <ArrowUpRight size={20} /></Link></div></div><div className="site-container footer-bottom"><span>© 2026 Solid Solutions</span><span>Design com propósito. Código com precisão.</span><Link to="/contato">Contato <ArrowUpRight size={14} /></Link></div></footer>
   </div>;
 }
