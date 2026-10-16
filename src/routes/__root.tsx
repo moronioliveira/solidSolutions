@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0b0a08" },
-      { name: "google-site-verification", content: "vlOEqnrNSAGnh_gmEB8MQAIhVAYfmyJrEywKjV-gNRM" },
+      { name: "google-site-verification", content: "QPjpY9wUoldS39acpwDbZ6gsvTE6ZXoDpQJgerp9TaI" },
     ],
     scripts: [{
       type: "application/ld+json", children: JSON.stringify({
