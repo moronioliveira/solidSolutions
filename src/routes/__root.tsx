@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify({
       "@context": "https://schema.org", "@type": "ProfessionalService", name: "Solid Solutions",
-      url: "https://solsy-portfoli-leadgen.lovable.app", image: "https://solsy-portfoli-leadgen.lovable.app/og-image.jpg",
+      url: "https://solid-solutions-portifolio.vercel.app", image: "https://solid-solutions-portifolio.vercel.app/og-image.jpg",
       description: "Criação de sites institucionais e landing pages profissionais.", areaServed: "BR",
       telephone: "+55 86 99429-1131", serviceType: ["Sites institucionais", "Landing pages", "Google Ads", "SEO local"],
     }) }],

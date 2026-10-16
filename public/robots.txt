@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://solsy-portfoli-leadgen.lovable.app/sitemap.xml
+Sitemap: https://solid-solutions-portifolio.vercel.app/sitemap.xml
