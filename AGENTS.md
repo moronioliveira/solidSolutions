@@ -12,3 +12,4 @@
 ## Application architecture
 - Shared portfolio sections and navigation live in reusable components, while each named content page has its own public TanStack route and metadata; this keeps navigation and search previews consistent.
 - Budget requests use a validated public server function and a private, RLS-enabled submissions table with a database rate-limit trigger; visitors can submit but cannot access collected leads.
+- Shared portfolio motion is progressively enhanced by a SiteShell-scoped browser hook and CSS; native observers, passive frame-scheduled scroll updates and reduced-motion cleanup keep SSR content readable and interaction lightweight.
