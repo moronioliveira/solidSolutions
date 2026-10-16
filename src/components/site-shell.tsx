@@ -6,6 +6,7 @@ import symbol from "@/assets/solid-solutions-symbol.jpg";
 import logo from "@/assets/solid-solutions-logo.jpg";
 import { useSiteMotion } from "@/hooks/use-site-motion";
 import { whatsappUrl } from "@/lib/commercial";
+import { SITE_URL, SHARE_IMAGE } from "@/lib/site";
 
 const navigation = [
   { label: "Início", to: "/" }, { label: "Projetos", to: "/projetos" },
@@ -34,6 +35,19 @@ export function PageIntro({ label, title, description }: { label: string; title:
   return <div className="page-intro site-container"><span className="eyebrow">{label}</span><h1>{title}</h1><p>{description}</p></div>;
 }
 
-export function pageHead(title: string, description: string) {
-  return { meta: [{ title: `${title} | Solid Solutions` }, { name: "description", content: description }, { property: "og:title", content: `${title} | Solid Solutions` }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] };
+export function pageHead(title: string, description: string, path: string) {
+  const fullTitle = `${title} | Solid Solutions`;
+  const url = `${SITE_URL}${path}`;
+  return {
+    meta: [
+      { title: fullTitle }, { name: "description", content: description },
+      { property: "og:title", content: fullTitle }, { property: "og:description", content: description },
+      { property: "og:type", content: "website" }, { property: "og:url", content: url },
+      { property: "og:image", content: SHARE_IMAGE }, { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" }, { property: "og:image:alt", content: "Solid Solutions — sites e landing pages" },
+      { name: "twitter:card", content: "summary_large_image" }, { name: "twitter:title", content: fullTitle },
+      { name: "twitter:description", content: description }, { name: "twitter:image", content: SHARE_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: url }],
+  };
 }

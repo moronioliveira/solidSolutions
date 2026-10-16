@@ -5,7 +5,7 @@ import { ProjectGrid, ContactBand, projects } from "@/components/portfolio-secti
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
-export const Route = createFileRoute("/projetos")({ validateSearch: (search: Record<string, unknown>): { projeto?: string } => typeof search['projeto'] === "string" ? { projeto: search['projeto'] } : {}, head: () => pageHead("Projetos e conceitos digitais", "Explore conceitos de sites institucionais e landing pages da Solid Solutions. Design original e experiências digitais com propósito."), component: Projects });
+export const Route = createFileRoute("/projetos")({ validateSearch: (search: Record<string, unknown>): { projeto?: string } => typeof search['projeto'] === "string" ? { projeto: search['projeto'] } : {}, head: () => pageHead("Projetos e conceitos digitais", "Explore conceitos de sites institucionais e landing pages da Solid Solutions. Design original e experiências digitais com propósito.", "/projetos"), component: Projects });
 function Projects() {
   const [filter, setFilter] = useState("Todos");
   const { projeto } = Route.useSearch();

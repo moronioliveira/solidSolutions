@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { contactSchema } from "@/lib/contact-schema";
 import { submitContact } from "@/lib/contact.functions";
 import { whatsappUrl } from "@/lib/commercial";
-export const Route = createFileRoute("/contato")({ head: () => pageHead("Vamos criar seu projeto", "Conte sua ideia à Solid Solutions e solicite uma proposta para seu site ou landing page. Vamos construir sua próxima experiência digital."), component: Contact });
+export const Route = createFileRoute("/contato")({ head: () => pageHead("Vamos criar seu projeto", "Conte sua ideia à Solid Solutions e solicite uma proposta para seu site ou landing page. Vamos construir sua próxima experiência digital.", "/contato"), component: Contact });
 function Contact() {
   const submit = useServerFn(submitContact);
   const [pending, setPending] = useState(false);

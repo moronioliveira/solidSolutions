@@ -84,8 +84,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Solid Solutions" },
       { property: "og:description", content: "Sites e landing pages com design e tecnologia." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Solid Solutions" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#0b0a08" },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify({
+      "@context": "https://schema.org", "@type": "ProfessionalService", name: "Solid Solutions",
+      url: "https://solsy-portfoli-leadgen.lovable.app", image: "https://solsy-portfoli-leadgen.lovable.app/og-image.jpg",
+      description: "Criação de sites institucionais e landing pages profissionais.", areaServed: "BR",
+      telephone: "+55 86 99429-1131", serviceType: ["Sites institucionais", "Landing pages", "Google Ads", "SEO local"],
+    }) }],
     links: [
       {
         rel: "stylesheet",
