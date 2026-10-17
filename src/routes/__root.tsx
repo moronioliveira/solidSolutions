@@ -85,6 +85,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Sites e landing pages com design e tecnologia." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Solid Solutions" },
+      { name: "application-name", content: "Solid Solutions" },
+      { name: "apple-mobile-web-app-title", content: "Solid Solutions" },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0b0a08" },
@@ -97,13 +99,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         description: "Criação de sites institucionais e landing pages profissionais.", areaServed: "BR",
         telephone: "+55 86 99429-1131", serviceType: ["Sites institucionais", "Landing pages", "Google Ads", "SEO local"],
       })
+    }, {
+      type: "application/ld+json", children: JSON.stringify({
+        "@context": "https://schema.org", "@type": "WebSite", name: "Solid Solutions",
+        alternateName: ["Solid Solutions Tech", "Solid Solutions Agência"],
+        url: "https://solid-solutions-portifolio.vercel.app/",
+      })
     }],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { rel: "icon", href: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+      { rel: "icon", href: "/favicon-192.png", type: "image/png", sizes: "192x192" },
+      { rel: "apple-touch-icon", href: "/favicon-192.png" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" },
     ],
   }),
