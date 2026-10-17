@@ -1,23 +1,23 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check, Code2, Globe, MousePointer2, Smartphone, Zap, Search, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import architecture from "@/assets/architecture.jpg";
-import headphones from "@/assets/headphones.jpg";
+import law from "@/assets/law.jpg";
+import dental from "@/assets/dental.jpg";
 
 export const projects = [
-  { name: "Forma Arquitetura", category: "Site institucional", image: architecture, kind: "architecture", headline: <>Espaços que<br />inspiram.</>, description: "Um conceito editorial para um escritório de arquitetura, com foco em imagens, identidade e apresentação de projetos." },
-  { name: "Pulse Audio", category: "Landing page", image: headphones, kind: "audio", headline: <>Ouça além.<br />Sinta tudo.</>, description: "Um conceito de lançamento para uma marca de áudio, com destaque para o produto e uma jornada direta para a conversão." },
+  { name: "Almeida & Ferraz", category: "Landing page", image: law, kind: "law", brand: "almeida & ferraz", nav: "Escritório · Atuação · Contato", tag: "ADVOCACIA ESTRATÉGICA ↗", alt: "Escritório de advocacia contemporâneo — Almeida & Ferraz", headline: <>Estratégia jurídica<br />de alto impacto.</>, description: "Landing page premium para escritório de advocacia corporativa, com foco em autoridade, áreas de atuação e geração de contatos qualificados." },
+  { name: "Clínica Odonto", category: "Landing page", image: dental, kind: "dental", brand: "clínica odonto", nav: "Serviços · Clínica · Agendar", tag: "AGENDE PELO WHATSAPP ↗", alt: "Atendimento odontológico moderno — Clínica Odonto", headline: <>Cuidado para<br />o seu sorriso.</>, description: "Landing page para clínica odontológica orientada à conversão, com especialidades em destaque e agendamento direto pelo WhatsApp." },
 ];
 
 export function ProjectGrid({ filter = "Todos" }: { filter?: string }) {
   return <div className="projects-grid">{projects.filter(p => filter === "Todos" || p.category === filter).map(project => <Link to="/projetos" search={{ projeto: project.name }} key={project.name} className="project" aria-label={`Conhecer ${project.name}`}>
-    <div className={`project-art ${project.kind}`}><div className="project-screen"><div className="project-browser"><i /><i /><i /><span>{project.name.toLowerCase().replaceAll(" ", "")}.conceito</span></div><div className="mock-nav"><strong>{project.kind === "audio" ? "pulse®" : "forma."}</strong><span>{project.kind === "audio" ? "Design · Tecnologia · Experiência" : "Projetos · Escritório · Contato"}</span></div><div className="mock-photo"><img src={project.image} alt={project.kind === "audio" ? "Fone de ouvido premium — conceito Pulse Audio" : "Casa contemporânea — conceito Forma Arquitetura"} width={1280} height={768} loading="lazy" /><div className="mock-overlay"><h3>{project.headline}</h3><span>{project.kind === "audio" ? "UMA NOVA EXPERIÊNCIA SONORA ↗" : "ARQUITETURA PARA VIVER MELHOR ↗"}</span></div></div></div></div>
+    <div className={`project-art ${project.kind}`}><div className="project-screen"><div className="project-browser"><i /><i /><i /><span>{project.name.toLowerCase().replaceAll(" ", "")}.demo</span></div><div className="mock-nav"><strong>{project.brand}</strong><span>{project.nav}</span></div><div className="mock-photo"><img src={project.image} alt={project.alt} width={1280} height={768} loading="lazy" /><div className="mock-overlay"><h3>{project.headline}</h3><span>{project.tag}</span></div></div></div></div>
     <div className="project-meta"><div><h3>{project.name}</h3><p>{project.category} · Design & desenvolvimento</p></div><ArrowUpRight /></div>
   </Link>)}</div>;
 }
 
 export function ProjectsSection() {
-  return <section className="section site-container"><div className="section-heading"><div><span className="eyebrow">01 / PROJETOS SELECIONADOS</span><h2>Ideias que ganham<br />forma. E presença.</h2></div><Link to="/projetos" className="text-cta">Explore os projetos <ArrowUpRight size={16} /></Link></div><ProjectGrid /><p className="concept-note">EXPLORAÇÕES CRIATIVAS · Projetos conceituais, não trabalhos de clientes.</p></section>;
+  return <section className="section site-container"><div className="section-heading"><div><span className="eyebrow">01 / PROJETOS SELECIONADOS</span><h2>Ideias que ganham<br />forma. E presença.</h2></div><Link to="/projetos" className="text-cta">Explore os projetos <ArrowUpRight size={16} /></Link></div><ProjectGrid /><p className="concept-note">PROJETOS SELECIONADOS · Landing pages desenvolvidas pela Solid Solutions.</p></section>;
 }
 
 const services = [
