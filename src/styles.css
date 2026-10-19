@@ -209,11 +209,11 @@ a,button { -webkit-tap-highlight-color: transparent; }
 .mock-overlay { position: absolute; left: 22px; top: 25px; color: var(--surface-light); }
 .mock-overlay h3 { font-size: 31px; line-height: 1.08; font-weight: 500; }
 .mock-overlay span { display: block; margin-top: 14px; font-size: 7px; }
-.project-art.architecture { background: oklch(0.72 0.035 145); }
-.project-art.audio { background: oklch(0.34 0.008 260); }
-.audio .project-screen,.audio .mock-nav { background: var(--ink); color: var(--surface-light); }
-.audio .mock-photo img { object-position: 65% 50%; }
-.audio .mock-overlay { top: 38px; }
+.project-art.dental { background: oklch(0.72 0.035 145); }
+.project-art.law { background: oklch(0.34 0.008 260); }
+.law .project-screen,.law .mock-nav { background: var(--ink); color: var(--surface-light); }
+.law .mock-photo img { object-position: 65% 50%; }
+.law .mock-overlay { top: 38px; }
 .project-meta { display: flex; justify-content: space-between; margin-top: 19px; align-items: center; }
 .project-meta h3 { font-size: 19px; font-weight: 500; }
 .project-meta p { color: var(--muted-foreground); font-size: 10px; margin-top: 7px; }
