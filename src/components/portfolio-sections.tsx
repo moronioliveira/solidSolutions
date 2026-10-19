@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Check, Code2, Globe, MousePointer2, Smartphone, Zap, Search, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import law from "@/assets/law.jpg";
-import dental from "@/assets/dental.jpg";
+import law from "@/assets/preview-almeida-ferraz.jpg";
+import dental from "@/assets/preview-clinica-odonto.jpg";
 
 export const projects = [
   { name: "Almeida & Ferraz", category: "Landing page", image: law, kind: "law", brand: "almeida & ferraz", nav: "Escritório · Atuação · Contato", tag: "ADVOCACIA ESTRATÉGICA ↗", alt: "Escritório de advocacia contemporâneo — Almeida & Ferraz", headline: <>Estratégia jurídica<br />de alto impacto.</>, description: "Landing page premium para escritório de advocacia corporativa, com foco em autoridade, áreas de atuação e geração de contatos qualificados." },
@@ -11,7 +11,7 @@ export const projects = [
 
 export function ProjectGrid({ filter = "Todos" }: { filter?: string }) {
   return <div className="projects-grid">{projects.filter(p => filter === "Todos" || p.category === filter).map(project => <Link to="/projetos" search={{ projeto: project.name }} key={project.name} className="project" aria-label={`Conhecer ${project.name}`}>
-    <div className={`project-art ${project.kind}`}><div className="project-screen"><div className="project-browser"><i /><i /><i /><span>{project.name.toLowerCase().replaceAll(" ", "")}.demo</span></div><div className="mock-nav"><strong>{project.brand}</strong><span>{project.nav}</span></div><div className="mock-photo"><img src={project.image} alt={project.alt} width={1280} height={768} loading="lazy" /><div className="mock-overlay"><h3>{project.headline}</h3><span>{project.tag}</span></div></div></div></div>
+    <div className={`project-art ${project.kind}`}><div className="project-screen"><div className="project-browser"><i /><i /><i /><span>{project.name.toLowerCase().replaceAll(" ", "").replace("&","")}.com.br</span></div><img className="project-shot" src={project.image} alt={`Tela da landing page ${project.name}`} width={1440} height={900} loading="lazy" /></div></div>
     <div className="project-meta"><div><h3>{project.name}</h3><p>{project.category} · Design & desenvolvimento</p></div><ArrowUpRight /></div>
   </Link>)}</div>;
 }
