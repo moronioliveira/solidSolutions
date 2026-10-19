@@ -388,3 +388,5 @@ a,button { -webkit-tap-highlight-color: transparent; }
  .page-intro { padding-top: 60px; } .page-intro h1 { font-size: 42px; } .page-intro p { font-size: 12px; } .about-content,.contact-layout { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; } .about-content h2 { font-size: 30px; } .form-row { grid-template-columns: 1fr; } .filter-bar { flex-wrap: wrap; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { animation: none !important; transition: none !important; } [data-motion="reveal"] { opacity: 1; transform: none; } .hero-image { translate: none; transform: none; } .project:hover .project-art,.project:hover .mock-photo img,.primary-cta:hover { transform: none; } .reading-progress { display: none; } }
+
+.project-shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
