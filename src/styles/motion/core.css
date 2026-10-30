@@ -21,6 +21,7 @@
 [data-motion="reveal"] {
   opacity: 0;
   transform: translateY(38px);
+  will-change: opacity, transform;
   transition:
     opacity 0.85s var(--ease-reveal),
     transform 0.85s var(--ease-reveal);
@@ -29,6 +30,7 @@
 [data-motion="reveal"][data-visible="true"] {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 [data-motion="reveal"]:focus-within {
   opacity: 1;

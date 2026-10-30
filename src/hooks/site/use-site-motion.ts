@@ -11,18 +11,23 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
     function initialize() {
       dispose();
       if (!root || preference.matches) return;
-      const targets = Array.from(root.querySelectorAll<HTMLElement>(
-        ".section-heading, .section > .eyebrow, .section > h2, .project, .solution, .process-step, .concept-note, .contact-band-inner > *, .footer-top > *, .page-intro > *, .about-content > *, .contact-aside, .capability-inner > span, .plan-card, .management-band, .plans-details, .plans-help",
-      ));
-      const observer = new IntersectionObserver(entries => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          entry.target.setAttribute("data-visible", "true");
-          observer.unobserve(entry.target);
-        }
-      }, { threshold: 0.12, rootMargin: "0px 0px -24px 0px" });
+      const targets = Array.from(
+        root.querySelectorAll<HTMLElement>(
+          ".capability-band, .section, .section-heading, .project, .solution, .process-step, .concept-note, .contact-band, .contact-band-inner > *, .footer-top > *, .page-intro > *, .about-content > *, .contact-aside, .contact-options, .capability-inner > span, .plan-card, .management-band, .plans-details, .plans-help",
+        ),
+      );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.setAttribute("data-visible", "true");
+            observer.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -24px 0px" },
+      );
 
-      targets.forEach(element => {
+      targets.forEach((element) => {
         const siblings = Array.from(element.parentElement?.children ?? []);
         const index = siblings.indexOf(element);
         element.style.setProperty("--motion-delay", `${Math.min(index, 3) * 95}ms`);
@@ -36,7 +41,10 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
         frame = 0;
         if (!root) return;
         const maximum = document.documentElement.scrollHeight - window.innerHeight;
-        root.style.setProperty("--reading-progress", `${maximum > 0 ? Math.min(1, window.scrollY / maximum) : 0}`);
+        root.style.setProperty(
+          "--reading-progress",
+          `${maximum > 0 ? Math.min(1, window.scrollY / maximum) : 0}`,
+        );
         if (hero) {
           const bounds = hero.getBoundingClientRect();
           if (bounds.bottom > 0 && bounds.top < window.innerHeight) {
@@ -57,8 +65,14 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
         const card = event.currentTarget;
         if (!(card instanceof HTMLElement)) return;
         const bounds = card.getBoundingClientRect();
-        card.style.setProperty("--tilt-x", `${((event.clientY - bounds.top) / bounds.height - 0.5) * -7}deg`);
-        card.style.setProperty("--tilt-y", `${((event.clientX - bounds.left) / bounds.width - 0.5) * 7}deg`);
+        card.style.setProperty(
+          "--tilt-x",
+          `${((event.clientY - bounds.top) / bounds.height - 0.5) * -7}deg`,
+        );
+        card.style.setProperty(
+          "--tilt-y",
+          `${((event.clientX - bounds.left) / bounds.width - 0.5) * 7}deg`,
+        );
       }
       function reset(event: PointerEvent) {
         const card = event.currentTarget;
@@ -66,7 +80,7 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
         card.style.removeProperty("--tilt-x");
         card.style.removeProperty("--tilt-y");
       }
-      cards.forEach(card => {
+      cards.forEach((card) => {
         card.addEventListener("pointermove", move);
         card.addEventListener("pointerleave", reset);
       });
@@ -76,14 +90,14 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
         window.cancelAnimationFrame(frame);
         window.removeEventListener("scroll", onScroll);
         window.removeEventListener("resize", onScroll);
-        targets.forEach(element => {
+        targets.forEach((element) => {
           element.removeAttribute("data-motion");
           element.removeAttribute("data-visible");
           element.style.removeProperty("--motion-delay");
         });
         hero?.style.removeProperty("--hero-scroll");
         root.style.removeProperty("--reading-progress");
-        cards.forEach(card => {
+        cards.forEach((card) => {
           card.removeEventListener("pointermove", move);
           card.removeEventListener("pointerleave", reset);
           card.style.removeProperty("--tilt-x");

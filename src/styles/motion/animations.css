@@ -1,4 +1,8 @@
 @media (prefers-reduced-motion: no-preference) {
+  .site-motion-root {
+    overflow-x: clip;
+  }
+
   .hero-image {
     translate: 0 var(--hero-scroll, 0px);
     animation: sculpture-drift 14s ease-in-out infinite;
@@ -32,6 +36,18 @@
   }
   .mobile-nav {
     animation: soft-enter 0.3s var(--ease-reveal) both;
+  }
+
+  .contact-option {
+    animation: soft-enter 0.65s var(--ease-reveal) both;
+  }
+
+  .contact-option:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  .contact-option:nth-child(3) {
+    animation-delay: 0.24s;
   }
 }
 @media (min-width: 1600px) {
