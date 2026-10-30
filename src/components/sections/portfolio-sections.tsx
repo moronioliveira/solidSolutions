@@ -12,24 +12,24 @@ import {
   Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/actions/button";
-import architecture from "@/assets/portfolio/architecture.jpg";
+import advocacia from "@/assets/portfolio/preview-almeida-ferraz.jpg";
 import headphones from "@/assets/portfolio/headphones.jpg";
 
 export const projects = [
   {
-    name: "Forma Arquitetura",
-    category: "Site institucional",
-    image: architecture,
-    kind: "architecture",
+    name: "Escritorio Advocacia",
+    category: "Landing page",
+    image: advocacia,
+    kind: "advocacia",
     headline: (
       <>
-        Espaços que
+        Landing Page
         <br />
-        inspiram.
+        personalisada
       </>
     ),
     description:
-      "Um conceito editorial para um escritório de arquitetura, com foco em imagens, identidade e apresentação de projetos.",
+      "Um conceito editorial para um escritório de advocacia, com foco em imagens, identidade e apresentação de projetos.",
   },
   {
     name: "Pulse Audio",
@@ -100,7 +100,7 @@ export function ProjectGrid({
                     <span>
                       {project.kind === "audio"
                         ? "UMA NOVA EXPERIÊNCIA SONORA ↗"
-                        : "ARQUITETURA PARA VIVER MELHOR ↗"}
+                        : "SUAS IDEIAS TOMAM FORMA↗"}
                     </span>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export function ProjectsSection() {
       </div>
       <ProjectGrid />
       <p className="concept-note">
-        EXPLORAÇÕES CRIATIVAS · Projetos conceituais, não trabalhos de clientes.
+        EXPLORAÇÕES CRIATIVAS · PROJETOS DESENVOLVIDOS
       </p>
     </section>
   );
