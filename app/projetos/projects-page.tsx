@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/overlays/dialog";
+
 export default function ProjectsPage() {
   const [filter, setFilter] = useState("Todos");
   const [selectedName, setSelectedName] = useState<string | null>(null);
@@ -51,10 +52,10 @@ export default function ProjectsPage() {
         </div>
         <ProjectGrid filter={filter} onProjectSelect={selectProject} />
         <p className="concept-note">
-          PROJETOS CONCEITUAIS · Estes exemplos ilustram possibilidades de design e não representam
-          clientes atendidos.
+          PROJETOS PROFISSIONAIS · Seja o proximo a ter sua empresa representada como ela merece.
         </p>
       </section>
+
       <Dialog
         open={Boolean(selected)}
         onOpenChange={(open) => {
@@ -64,10 +65,30 @@ export default function ProjectsPage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{selected?.name}</DialogTitle>
-            <DialogDescription>{selected?.category} · Projeto conceitual</DialogDescription>
+            <DialogDescription>
+              {selected?.category} · Projeto profissional
+            </DialogDescription>
           </DialogHeader>
+
           {selected && (
             <>
+              {/* Usando o componente Button com renderização condicional ternária */}
+              <div>
+                <Button asChild>
+                  <a
+                    href={
+                      selected.kind === "odontologia"
+                        ? "https://sorriso-page.vercel.app/"
+                        : "https://advogado-teresina.vercel.app/"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Clique aqui para acessar
+                  </a>
+                </Button>
+              </div>
+
               <img src={selected.image.src} alt={selected.name} width={1280} height={768} />
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {selected.description}
