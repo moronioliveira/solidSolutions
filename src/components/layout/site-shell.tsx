@@ -1,6 +1,6 @@
 "use client";
 
-import "./site-shell.module.css";
+import "./site-shell.css";
 import "../../styles/motion/core.css";
 import "../../styles/motion/animations.css";
 import "../../styles/motion/reduced-motion.css";

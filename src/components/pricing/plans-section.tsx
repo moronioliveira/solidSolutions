@@ -1,5 +1,5 @@
 import { ArrowUpRight, Check, ChartNoAxesCombined, MessageCircle, ShieldCheck } from "lucide-react";
-import "./plans-section.module.css";
+import "./plans-section.css";
 import { Button } from "@/components/ui/actions/button";
 import { adBudget, adManagement, commercialPlans, formatBRL, whatsappUrl } from "@/lib/pricing/commercial";
 

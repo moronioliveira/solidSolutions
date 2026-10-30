@@ -1,5 +1,5 @@
 import Link from "next/link";
-import "./portfolio-sections.module.css";
+import "./portfolio-sections.css";
 import {
   ArrowUpRight,
   Check,
