@@ -1,27 +1,25 @@
-:global {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-  [data-motion="reveal"] {
-    opacity: 1;
-    transform: none;
-  }
-  .hero-image {
-    translate: none;
-    transform: none;
-  }
-  .project:hover .project-art,
-  .project:hover .mock-photo img,
-  .primary-cta:hover {
-    transform: none;
-  }
-  .reading-progress {
-    display: none;
-  }
+html {
+  scroll-behavior: auto;
+}
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+}
+[data-motion="reveal"] {
+  opacity: 1;
+  transform: none;
+}
+.hero-image {
+  translate: none;
+  transform: none;
+}
+.project:hover .project-art,
+.project:hover .mock-photo img,
+.primary-cta:hover {
+  transform: none;
+}
+.reading-progress {
+  display: none;
 }
