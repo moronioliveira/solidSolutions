@@ -1,0 +1,38 @@
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-motion="reveal"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .site-container {
+    width: min(100% - 40px, 1280px);
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 12vw, 62px);
+  }
+
+  .contact-band h2 {
+    font-size: clamp(40px, 11vw, 58px);
+  }
+}

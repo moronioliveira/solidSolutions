@@ -1,24 +1,43 @@
-# Solsy Portfoli Leadgen
+# Solid Solutions
 
-Analise esse video e use o site apresentado nele para criar um portifolio para mim, com o nome da empresa sendo Solid Solutions Leve em conta também a paleta de cores  da logo que mandei também como apoio visual, use a logo dentro do site, ele precisa ser profissional, voltado para o publico tech, e deve ter o objetivo de vender sites e landing pages para clientes que o acessarem
+Portfólio da Solid Solutions, construído com Next.js, TypeScript, React, Tailwind CSS,
+Prisma e PostgreSQL. O site apresenta os serviços, projetos conceituais e recebe
+solicitações de orçamento.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/2823dcc1-afb3-4dbc-a872-80197b873dca).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Desenvolvimento
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+Copie `.env.example` para `.env` e informe uma `DATABASE_URL` apontando para seu
+PostgreSQL. Em produção, essa URL precisa apontar para um banco PostgreSQL hospedado
+e acessível pela Vercel; `localhost` funciona apenas no desenvolvimento local. Para
+enviar notificações ao Discord, informe também `DISCORD_WEBHOOK_URL`.
+
+```sh
+npx prisma migrate dev
+npm test
+npm run build
+```
+
+O formulário envia os dados para `app/api/contact/route.ts`; os visitantes nunca
+consultam os pedidos salvos. O Prisma concentra o acesso ao banco em
+`src/lib/prisma.ts`.
+
+Os metadados, canonical, Open Graph, JSON-LD, sitemap e robots são gerados pelo
+App Router. O endereço público pode ser alterado com `NEXT_PUBLIC_SITE_URL`.
+
+## Organização do código
+
+- `app/`: rotas públicas, metadata e endpoints do Next.js.
+- `src/components/layout/`: shell global, navegação e introduções de página.
+- `src/components/sections/`: seções reutilizáveis de conteúdo do portfólio.
+- `src/components/pricing/`: planos, preços e chamadas comerciais.
+- `src/components/ui/`: componentes visuais genéricos reutilizáveis.
+- `src/assets/`: imagens agrupadas por marca, hero e portfólio.
+- `src/lib/`: regras de negócio agrupadas por banco, formulários, preços, SEO e site.
+- `src/hooks/`: hooks agrupados por comportamento do site e componentes de UI.
+- `src/styles/`: tokens/base, layout, páginas, motion e acessibilidade.
+- `src/tests/`: testes separados da implementação por tipo.
