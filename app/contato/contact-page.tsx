@@ -1,6 +1,6 @@
 "use client";
 
-import "@/components/contact/contact-page.module.css";
+import "@/components/contact/contact-page.css";
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, CheckCircle2, Loader2, MessageCircle } from "lucide-react";
