@@ -13,10 +13,11 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/actions/button";
 import advocacia from "@/assets/portfolio/preview-almeida-ferraz.jpg";
-import headphones from "@/assets/portfolio/headphones.jpg";
+import odonto from "@/assets/portfolio/preview-clinica-odonto.jpg";
 
 export const projects = [
   {
+    id: 1,
     name: "Escritorio Advocacia",
     category: "Landing page",
     image: advocacia,
@@ -29,22 +30,23 @@ export const projects = [
       </>
     ),
     description:
-      "Um conceito editorial para um escritório de advocacia, com foco em imagens, identidade e apresentação de projetos.",
+      "Uma Landing Page para um escritório de advocacia, com foco em imagens, identidade e apresentação da empresa.",
   },
   {
-    name: "Pulse Audio",
+    id: 2,
+    name: "Clinica Odontologica",
     category: "Landing page",
-    image: headphones,
-    kind: "audio",
+    image: odonto,
+    kind: "odontologia",
     headline: (
       <>
-        Ouça além.
+        
         <br />
-        Sinta tudo.
+        
       </>
     ),
     description:
-      "Um conceito de lançamento para uma marca de áudio, com destaque para o produto e uma jornada direta para a conversão.",
+      "Uma Landing Page criada para atrair clientes e estabelecer autoridade profissional.",
   },
 ];
 
@@ -73,12 +75,12 @@ export function ProjectGrid({
                   <i />
                   <i />
                   <i />
-                  <span>{project.name.toLowerCase().replaceAll(" ", "")}.conceito</span>
+                  <span>{project.name.toLowerCase().replaceAll(" ", "")}.com</span>
                 </div>
                 <div className="mock-nav">
-                  <strong>{project.kind === "audio" ? "pulse®" : "forma."}</strong>
+                  <strong>{project.kind === "odontologia" ? "Alcance" : "Projete"}</strong>
                   <span>
-                    {project.kind === "audio"
+                    {project.kind === "odontologia"
                       ? "Design · Tecnologia · Experiência"
                       : "Projetos · Escritório · Contato"}
                   </span>
@@ -87,7 +89,7 @@ export function ProjectGrid({
                   <img
                     src={project.image.src}
                     alt={
-                      project.kind === "audio"
+                      project.kind === "odontologia"
                         ? "Fone de ouvido premium — conceito Pulse Audio"
                         : "Casa contemporânea — conceito Forma Arquitetura"
                     }
@@ -98,8 +100,8 @@ export function ProjectGrid({
                   <div className="mock-overlay">
                     <h3>{project.headline}</h3>
                     <span>
-                      {project.kind === "audio"
-                        ? "UMA NOVA EXPERIÊNCIA SONORA ↗"
+                      {project.kind === "odontologia"
+                        ? ""
                         : "SUAS IDEIAS TOMAM FORMA↗"}
                     </span>
                   </div>
