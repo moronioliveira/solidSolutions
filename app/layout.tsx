@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../src/styles/index.css";
+import { PageTransition } from "@/components/layout/page-transition";
 import { SITE_URL, SHARE_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pt-BR">
       <body>
-        {children}
+        <PageTransition>{children}</PageTransition>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
