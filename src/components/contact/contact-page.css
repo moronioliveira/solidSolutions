@@ -1,88 +1,48 @@
-:global {
-  .contact-aside h2 {
-    font-size: 26px;
-    margin-bottom: 22px;
-  }
-  .contact-aside p {
-    font-size: 13px;
-    line-height: 1.9;
-    color: var(--muted-foreground);
-  }
-  .contact-aside ul {
-    display: grid;
-    gap: 16px;
-    margin-top: 28px;
-    font-size: 12px;
-  }
-  .contact-aside li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .contact-aside svg {
-    color: var(--primary);
-    width: 16px;
-  }
-  .contact-form {
-    display: grid;
-    gap: 24px;
-  }
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .form-field {
-    display: grid;
-    gap: 10px;
-    font-size: 12px;
-  }
-  .form-field input,
-  .form-field textarea,
-  .form-field select {
-    width: 100%;
-    border: 1px solid var(--input);
-    padding: 13px;
-    background: var(--card);
-    color: var(--foreground);
-    border-radius: 4px;
-    outline: none;
-    font: inherit;
-  }
-  .form-field input:focus,
-  .form-field textarea:focus,
-  .form-field select:focus {
-    border-color: var(--primary);
-  }
-  .form-field textarea {
-    resize: vertical;
-    min-height: 140px;
-  }
-  .form-privacy {
-    color: var(--muted-foreground);
-    font-size: 10px;
-    line-height: 1.7;
-  }
-  .form-error {
-    color: var(--destructive);
-    font-size: 12px;
-  }
-  .form-success {
-    border-top: 1px solid var(--border);
-    padding: 50px 0;
-  }
-  .form-success > svg {
-    color: var(--primary);
-    width: 42px;
-    height: 42px;
-  }
-  .form-success h2 {
-    font-size: 30px;
-    margin: 25px 0 14px;
-  }
-  .form-success p {
-    color: var(--muted-foreground);
-    font-size: 13px;
-    margin-bottom: 24px;
-  }
+.contact-aside h2 {
+  font-size: 26px;
+  margin-bottom: 22px;
+}
+.contact-aside p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--muted-foreground);
+}
+.contact-aside ul {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+  font-size: 12px;
+}
+.contact-aside li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contact-aside svg {
+  color: var(--primary);
+  width: 16px;
+}
+.contact-options {
+  border-top: 1px solid var(--border);
+  padding-top: 30px;
+}
+.contact-options h2 {
+  font-size: 30px;
+  margin: 25px 0 14px;
+}
+.contact-option-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 32px;
+}
+.contact-option {
+  justify-content: space-between;
+  width: 100%;
+  min-height: 58px;
+  padding-inline: 20px;
+}
+.contact-whatsapp p {
+  color: var(--muted-foreground);
+  font-size: 13px;
+  margin-bottom: 24px;
 }
