@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/actions/button";
 import advocacia from "@/assets/portfolio/preview-almeida-ferraz.jpg";
 import odonto from "@/assets/portfolio/preview-clinica-odonto.jpg";
+import nutri from "@/assets/portfolio/preview-nutricionista.jpg"
 
 export const projects = [
   {
@@ -22,13 +23,6 @@ export const projects = [
     category: "Landing page",
     image: advocacia,
     kind: "advocacia",
-    headline: (
-      <>
-        Landing Page
-        <br />
-        personalisada
-      </>
-    ),
     description:
       "Uma Landing Page para um escritório de advocacia, com foco em imagens, identidade e apresentação da empresa.",
   },
@@ -38,17 +32,64 @@ export const projects = [
     category: "Landing page",
     image: odonto,
     kind: "odontologia",
-    headline: (
-      <>
-        
-        <br />
-        
-      </>
-    ),
     description:
-      "Uma Landing Page criada para atrair clientes e estabelecer autoridade profissional.",
+      "Uma Landing Page para uma clinica ondontologica, mostrando os serviços, equipe e informações de contato da empresa.",
   },
+
+  {
+    id: 3,
+    name: "Perfil Nutricionista",
+    category: "Landing page",
+    image: nutri,
+    kind: "nutricionista",
+    description: 
+    "Uma Landing Page para um nutricionista, apresentando o perfil profissional, serviços oferecidos e informações de contato.",
+  }
 ];
+
+const getPromessasText = (kind: string) => {
+  switch (kind) {
+    case "odontologia":
+      return "Alcance";
+    case "advocacia":
+      return "Projete";
+    case "nutricionista":
+      return "Reforce";
+  }
+};
+
+const getHabilityText = (kind: string) => {
+  switch (kind) {
+    case "odontologia":
+      return "Design · Desenvolvimento · SEO";
+    case "advocacia":
+      return "Planejamento · Estratégia · Execução";
+    case "nutricionista":
+      return "Nutrição · Saúde · Bem-estar";
+  }
+};
+
+const getFocoText = (kind: string) => {
+  switch (kind) {
+    case "odontologia":
+      return "Profissionalismo e confiança";
+    case "advocacia":
+      return "Imagem e credibilidade";
+    case "nutricionista":
+      return "Nutrição, saúde e bem-estar";
+  }
+};
+
+const getAltText = (kind: string) => {
+  switch (kind) {
+    case "odontologia":
+      return "Landing page Odontologica";
+    case "advocacia":
+      return "Landing page de advocacia";
+    case "nutricionista":
+      return "Landing page de nutricionista";
+  }
+};
 
 export function ProjectGrid({
   filter = "Todos",
@@ -78,32 +119,23 @@ export function ProjectGrid({
                   <span>{project.name.toLowerCase().replaceAll(" ", "")}.com</span>
                 </div>
                 <div className="mock-nav">
-                  <strong>{project.kind === "odontologia" ? "Alcance" : "Projete"}</strong>
+                  <strong>{getPromessasText(project.kind)}</strong>
                   <span>
-                    {project.kind === "odontologia"
-                      ? "Design · Tecnologia · Experiência"
-                      : "Projetos · Escritório · Contato"}
+                   {getHabilityText(project.kind)}
                   </span>
                 </div>
                 <div className="mock-photo">
                   <img
                     src={project.image.src}
                     alt={
-                      project.kind === "odontologia"
-                        ? "Fone de ouvido premium — conceito Pulse Audio"
-                        : "Casa contemporânea — conceito Forma Arquitetura"
+                     getAltText(project.kind) || project.name
                     }
                     width={1280}
                     height={768}
                     loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                   />
                   <div className="mock-overlay">
-                    <h3>{project.headline}</h3>
-                    <span>
-                      {project.kind === "odontologia"
-                        ? ""
-                        : "SUAS IDEIAS TOMAM FORMA↗"}
-                    </span>
                   </div>
                 </div>
               </div>
@@ -111,7 +143,7 @@ export function ProjectGrid({
             <div className="project-meta">
               <div>
                 <h3>{project.name}</h3>
-                <p>{project.category} · Design & desenvolvimento</p>
+                <p>{project.category} · {getFocoText(project.kind)}</p>
               </div>
               <ArrowUpRight />
             </div>
@@ -139,7 +171,7 @@ export function ProjectsSection() {
       </div>
       <ProjectGrid />
       <p className="concept-note">
-        EXPLORAÇÕES CRIATIVAS · PROJETOS DESENVOLVIDOS
+        DESIGNES CRIATIVOS · Cada projeto é pensado para transmitir a essência da marca e gerar resultados reais.
       </p>
     </section>
   );
