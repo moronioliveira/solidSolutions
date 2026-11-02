@@ -187,6 +187,38 @@
 .plans-help p {
   color: var(--muted-foreground);
 }
+
+@media (max-width: 700px) {
+  .plans-grid,
+  .management-band,
+  .plans-details {
+    grid-template-columns: 1fr;
+  }
+  .plan-card {
+    padding: 24px 20px;
+  }
+  .plan-card h3 {
+    font-size: 28px;
+  }
+  .plan-audience {
+    min-height: 0;
+  }
+  .plan-price > strong {
+    font-size: 42px;
+  }
+  .plan-cta {
+    width: 100%;
+  }
+  .management-band,
+  .plans-details {
+    gap: 32px;
+  }
+  .plans-help {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
 @media (max-width: 900px) {
   .plan-card {
     padding: 24px;

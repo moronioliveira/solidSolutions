@@ -38,7 +38,7 @@ export default function ProjectsPage() {
         title="Cada ideia, uma nova possibilidade."
         description="Design e tecnologia em diferentes contextos. Conheça nossos conceitos e imagine o que podemos criar para a sua marca."
       />
-      <section className="section site-container">
+      <section className="projects-page section site-container">
         <div className="filter-bar">
           {["Todos", "Site institucional", "Landing page"].map((item) => (
             <Button
@@ -62,7 +62,7 @@ export default function ProjectsPage() {
           if (!open) selectProject(null);
         }}
       >
-        <DialogContent>
+        <DialogContent className="project-dialog">
           <DialogHeader>
             <DialogTitle>{selected?.name}</DialogTitle>
             <DialogDescription>
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
           {selected && (
             <>
               {/* Usando o componente Button com renderização condicional ternária */}
-              <div>
+              <div className="project-dialog-actions">
                 <Button asChild>
                   <a
                     href={
@@ -89,11 +89,17 @@ export default function ProjectsPage() {
                 </Button>
               </div>
 
-              <img src={selected.image.src} alt={selected.name} width={1280} height={768} />
+              <img
+                className="project-dialog-image"
+                src={selected.image.src}
+                alt={selected.name}
+                width={1280}
+                height={768}
+              />
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {selected.description}
               </p>
-              <Button asChild>
+              <Button asChild className="project-dialog-cta">
                 <Link href="/contato">Quero um projeto assim</Link>
               </Button>
             </>

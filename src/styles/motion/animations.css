@@ -74,7 +74,8 @@
 }
 @media (max-width: 700px) {
   .site-container {
-    width: calc(100% - 40px);
+    width: calc(100% - 32px);
+    max-width: 1280px;
   }
   .site-header {
     height: 76px;
@@ -95,20 +96,22 @@
   }
   .brand > span > span {
     font-size: 8px;
+    letter-spacing: 3px;
   }
   .hero {
-    min-height: 680px;
+    min-height: 650px;
     align-items: flex-start;
   }
   .hero-content {
-    padding-top: 55px;
-    padding-bottom: 170px;
+    padding-top: 48px;
+    padding-bottom: 150px;
   }
   .hero h1 {
-    font-size: 40px;
-    max-width: 450px;
+    font-size: clamp(34px, 11vw, 40px);
+    max-width: 100%;
     line-height: 1.06;
     margin-top: 22px;
+    letter-spacing: -0.035em;
   }
   .hero-image {
     object-position: 77% 100%;
@@ -121,12 +124,24 @@
   }
   .hero-description {
     font-size: 12px;
-    max-width: 310px;
+    max-width: 32rem;
+    line-height: 1.75;
   }
   .hero-actions {
-    gap: 20px;
+    align-items: flex-start;
+    gap: 16px;
     flex-wrap: wrap;
     margin-top: 25px;
+  }
+  .hero-actions .primary-cta {
+    max-width: 100%;
+    min-height: 44px;
+    height: auto;
+    white-space: normal;
+    text-align: left;
+  }
+  .hero-actions .text-cta {
+    min-height: 44px;
   }
   .hero-bottom {
     bottom: 22px;
@@ -137,10 +152,10 @@
   }
   .capability-inner {
     height: auto;
-    min-height: 110px;
+    min-height: 104px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 16px;
     padding-block: 22px;
     font-size: 8px;
   }
@@ -148,7 +163,7 @@
     display: none;
   }
   .section {
-    padding-block: 60px;
+    padding-block: 52px;
   }
   .section h2 {
     font-size: 34px;
@@ -156,23 +171,17 @@
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
-    gap: 24px;
+    gap: 18px;
   }
   .section-heading .text-cta {
     font-size: 11px;
   }
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 32px;
   }
-  .project-screen {
-    inset: 23px;
-  }
-  .mock-overlay h3 {
-    font-size: 27px;
-  }
-  .mock-overlay {
-    top: 18px;
+  .projects-page .project-art {
+    aspect-ratio: 1.28;
   }
   .solutions-grid {
     grid-template-columns: 1fr;
@@ -208,21 +217,29 @@
     flex-direction: column;
   }
   .contact-band h2 {
-    font-size: 46px;
+    font-size: clamp(36px, 12vw, 46px);
   }
   .contact-band .primary-cta {
     margin-top: 8px;
+    max-width: 100%;
+    height: auto;
+    min-height: 44px;
+    white-space: normal;
+    text-align: left;
   }
   .footer-top {
     align-items: flex-start;
-    gap: 28px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 20px;
   }
   .footer-top > img {
-    width: 115px;
-    height: 80px;
+    width: 104px;
+    height: 72px;
   }
   .footer-top p {
-    font-size: 16px;
+    font-size: clamp(15px, 4.5vw, 18px);
+    line-height: 1.25;
   }
   .footer-top .eyebrow {
     font-size: 6px;
@@ -231,24 +248,33 @@
     flex-wrap: wrap;
     padding-block: 22px;
     gap: 14px;
+    line-height: 1.5;
   }
   .footer-bottom > span:nth-child(2) {
     display: none;
   }
   .page-intro {
-    padding-top: 60px;
+    padding-top: 50px;
+    padding-bottom: 8px;
   }
   .page-intro h1 {
-    font-size: 42px;
+    max-width: 100%;
+    font-size: clamp(30px, 10.5vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin-block: 18px;
   }
   .page-intro p {
     font-size: 12px;
+    line-height: 1.75;
+    max-width: 36rem;
   }
   .about-content,
   .contact-layout {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding-bottom: 60px;
+    gap: 36px;
+    padding-top: 40px;
+    padding-bottom: 56px;
   }
   .about-content h2 {
     font-size: 30px;
@@ -256,8 +282,107 @@
   .form-row {
     grid-template-columns: 1fr;
   }
+  .contact-aside h2,
+  .contact-options h2 {
+    font-size: clamp(25px, 8vw, 30px);
+    line-height: 1.15;
+  }
+  .contact-option {
+    min-height: 54px;
+    padding-inline: 16px;
+    text-align: left;
+  }
+  .contact-whatsapp a {
+    max-width: 100%;
+    white-space: normal;
+    height: auto;
+    min-height: 44px;
+    text-align: left;
+  }
   .filter-bar {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 26px;
+  }
+  .filter-bar > button {
+    width: 100%;
+    min-height: 42px;
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+  .filter-bar > button:last-child {
+    grid-column: 1 / -1;
+  }
+  .project-screen {
+    inset: 12px;
+  }
+  .project-browser {
+    height: 15px;
+  }
+  .mock-nav {
+    height: 24px;
+    padding-inline: 9px;
+    font-size: 6px;
+  }
+  .mock-nav strong {
+    font-size: 7px;
+  }
+  .mock-photo {
+    height: calc(100% - 40px);
+  }
+  .mock-overlay {
+    left: 11px;
+    top: 12px;
+  }
+  .mock-overlay h3 {
+    max-width: 80%;
+    font-size: clamp(17px, 7vw, 24px);
+  }
+  .mock-overlay span {
+    margin-top: 8px;
+    font-size: 6px;
+  }
+  .project-meta {
+    align-items: flex-start;
+    margin-top: 12px;
+  }
+  .project-meta h3 {
+    font-size: 16px;
+  }
+  .project-meta p {
+    font-size: 9px;
+    line-height: 1.5;
+    max-width: 24rem;
+  }
+  .project-meta > svg {
+    width: 18px;
+  }
+  .concept-note {
+    font-size: 8px;
+    line-height: 1.6;
+    max-width: 32rem;
+  }
+  .project-dialog {
+    width: calc(100% - 1rem);
+    max-height: calc(100dvh - 1rem);
+    padding: 1rem;
+    gap: 14px;
+  }
+  .project-dialog-image {
+    width: 100%;
+    height: auto;
+    max-height: 30dvh;
+    object-fit: cover;
+  }
+  .project-dialog-actions,
+  .project-dialog-actions > a,
+  .project-dialog-cta {
+    width: 100%;
+  }
+  .project-dialog-actions > a,
+  .project-dialog-cta {
+    min-height: 42px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
