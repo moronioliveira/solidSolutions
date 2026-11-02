@@ -15,11 +15,12 @@ import { Button } from "@/components/ui/actions/button";
 import advocacia from "@/assets/portfolio/preview-almeida-ferraz.jpg";
 import odonto from "@/assets/portfolio/preview-clinica-odonto.jpg";
 import nutri from "@/assets/portfolio/preview-nutricionista.jpg"
+import construtora from "@/assets/portfolio/preview-alvorada.jpg"
 
 export const projects = [
   {
     id: 1,
-    name: "Escritorio Advocacia",
+    name: "Almeida & Ferraz Advocacia",
     category: "Landing page",
     image: advocacia,
     kind: "advocacia",
@@ -28,7 +29,7 @@ export const projects = [
   },
   {
     id: 2,
-    name: "Clinica Odontologica",
+    name: "Clinica Odontológica Sorriso",
     category: "Landing page",
     image: odonto,
     kind: "odontologia",
@@ -38,12 +39,21 @@ export const projects = [
 
   {
     id: 3,
-    name: "Perfil Nutricionista",
+    name: "Dra. Camilia Rodrigues - Nutricionista",
     category: "Landing page",
     image: nutri,
     kind: "nutricionista",
     description: 
     "Uma Landing Page para um nutricionista, apresentando o perfil profissional, serviços oferecidos e informações de contato.",
+  },
+  {
+    id: 4,
+    name: "Construtora Alvorada",
+    category: "Site institucional",
+    image: construtora,
+    kind: "construtora",
+    description:
+      "Um site institucional para uma construtora, destacando projetos, serviços e informações sobre a empresa.",
   }
 ];
 
@@ -55,6 +65,8 @@ const getPromessasText = (kind: string) => {
       return "Projete";
     case "nutricionista":
       return "Reforce";
+      case "construtora":
+        return "Construa";
   }
 };
 
@@ -66,6 +78,8 @@ const getHabilityText = (kind: string) => {
       return "Planejamento · Estratégia · Execução";
     case "nutricionista":
       return "Nutrição · Saúde · Bem-estar";
+      case "construtora":
+        return "Projetos · Construção · Qualidade";
   }
 };
 
@@ -77,6 +91,8 @@ const getFocoText = (kind: string) => {
       return "Imagem e credibilidade";
     case "nutricionista":
       return "Nutrição, saúde e bem-estar";
+      case "construtora":
+        return "Projetos e qualidade";
   }
 };
 
@@ -88,6 +104,8 @@ const getAltText = (kind: string) => {
       return "Landing page de advocacia";
     case "nutricionista":
       return "Landing page de nutricionista";
+      case "construtora":
+        return "Site institucional de construtora";
   }
 };
 

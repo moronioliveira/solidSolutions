@@ -39,6 +39,8 @@ export default function ProjectsPage() {
         return "https://advogado-teresina.vercel.app/";
       case "nutricionista":
         return "https://nutricionista-lake-eight.vercel.app/";
+      case "construtora":
+        return "https://construtora-alvorada.vercel.app/";
     }
   };
 
@@ -77,7 +79,7 @@ export default function ProjectsPage() {
           <DialogHeader>
             <DialogTitle>{selected?.name}</DialogTitle>
             <DialogDescription>
-              {selected?.category} · Projeto profissional
+              {selected?.category} · Conheça esse projeto
             </DialogDescription>
           </DialogHeader>
 

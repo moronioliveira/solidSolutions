@@ -168,7 +168,7 @@
 }
 .concept-note {
   font-family: var(--font-code);
-  font-size: 9px;
+  font-size: 15px;
   color: var(--muted-foreground);
   margin-top: 26px;
 }
@@ -343,7 +343,7 @@
     width: 18px;
   }
   .concept-note {
-    font-size: 8px;
+    font-size: 12px;
     line-height: 1.6;
   }
   .solution,
