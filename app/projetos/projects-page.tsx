@@ -31,6 +31,17 @@ export default function ProjectsPage() {
     window.history.replaceState({}, "", url);
   }
 
+  const getLink = (kind: string) => {
+    switch (kind) {
+      case "odontologia":
+        return "https://sorriso-page.vercel.app/";
+      case "advocacia":
+        return "https://advogado-teresina.vercel.app/";
+      case "nutricionista":
+        return "https://nutricionista-lake-eight.vercel.app/";
+    }
+  };
+
   return (
     <SiteShell>
       <PageIntro
@@ -72,14 +83,12 @@ export default function ProjectsPage() {
 
           {selected && (
             <>
-              {/* Usando o componente Button com renderização condicional ternária */}
+              
               <div className="project-dialog-actions">
                 <Button asChild>
                   <a
                     href={
-                      selected.kind === "odontologia"
-                        ? "https://sorriso-page.vercel.app/"
-                        : "https://advogado-teresina.vercel.app/"
+                     getLink(selected.kind) || "#"
                     }
                     target="_blank"
                     rel="noopener noreferrer"
