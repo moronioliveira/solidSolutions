@@ -276,3 +276,128 @@
   max-width: 400px;
   line-height: 1.8;
 }
+
+@media (max-width: 700px) {
+  .section {
+    padding-block: 52px;
+  }
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+  .section h2 {
+    font-size: clamp(29px, 8.5vw, 34px);
+    letter-spacing: -0.03em;
+  }
+  .projects-grid,
+  .solutions-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .projects-page .project-art {
+    aspect-ratio: 1.28;
+  }
+  .project-screen {
+    inset: 12px;
+  }
+  .project-browser {
+    height: 15px;
+  }
+  .mock-nav {
+    height: 24px;
+    padding-inline: 9px;
+    font-size: 6px;
+  }
+  .mock-nav strong {
+    font-size: 7px;
+  }
+  .mock-photo {
+    height: calc(100% - 39px);
+  }
+  .mock-overlay {
+    left: 11px;
+    top: 12px;
+  }
+  .mock-overlay h3 {
+    max-width: 80%;
+    font-size: clamp(17px, 7vw, 24px);
+  }
+  .mock-overlay span {
+    margin-top: 8px;
+    font-size: 6px;
+  }
+  .project-meta {
+    align-items: flex-start;
+    margin-top: 12px;
+  }
+  .project-meta h3 {
+    font-size: 16px;
+  }
+  .project-meta p {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+  .project-meta > svg {
+    width: 18px;
+  }
+  .concept-note {
+    font-size: 8px;
+    line-height: 1.6;
+  }
+  .solution,
+  .solution:first-child {
+    padding: 0 0 32px;
+    border-left: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .solution:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .solution > svg {
+    margin-bottom: 22px;
+  }
+  .solution h3 {
+    font-size: 21px;
+  }
+  .solution p {
+    max-width: none;
+    line-height: 1.75;
+  }
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 18px;
+    margin-top: 34px;
+  }
+  .process-step h3 {
+    font-size: 17px;
+    margin-block: 18px 10px;
+  }
+  .process-step p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .contact-band {
+    padding-block: 56px;
+  }
+  .contact-band-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .contact-band h2 {
+    font-size: clamp(36px, 12vw, 46px);
+  }
+  .contact-band p {
+    max-width: 32rem;
+  }
+  .contact-band .primary-cta {
+    max-width: 100%;
+    height: auto;
+    min-height: 44px;
+    white-space: normal;
+    text-align: left;
+  }
+}

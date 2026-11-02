@@ -46,3 +46,23 @@
   font-size: 13px;
   margin-bottom: 24px;
 }
+
+@media (max-width: 700px) {
+  .contact-aside h2,
+  .contact-options h2 {
+    font-size: clamp(25px, 8vw, 30px);
+    line-height: 1.15;
+  }
+  .contact-option {
+    min-height: 54px;
+    padding-inline: 16px;
+    text-align: left;
+  }
+  .contact-whatsapp a {
+    max-width: 100%;
+    white-space: normal;
+    height: auto;
+    min-height: 44px;
+    text-align: left;
+  }
+}
