@@ -1,0 +1,153 @@
+/*
+ * Movimento como melhoria progressiva: sem JavaScript, ou com movimento reduzido,
+ * todo o conteúdo fica visível. O hook use-site-motion só marca [data-motion] quando pode animar.
+ */
+:root {
+  --ease-reveal: cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  height: 2px;
+  background: var(--brand-gradient);
+  transform: scaleX(var(--reading-progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+[data-motion="reveal"] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s var(--ease-reveal),
+    transform 0.8s var(--ease-reveal);
+  transition-delay: var(--motion-delay, 0ms);
+}
+[data-motion="reveal"][data-visible="true"],
+[data-motion="reveal"]:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgb(255 255 255 / 0.35) 48%, transparent 65%);
+  transform: translateX(-140%);
+  pointer-events: none;
+}
+.btn-primary:hover::after {
+  transform: translateX(140%);
+  transition: transform 0.75s;
+}
+.btn svg,
+.text-cta svg,
+.footer-cta svg {
+  transition: transform 0.3s var(--ease-reveal);
+}
+.btn:hover svg,
+.text-cta:hover svg,
+.footer-cta:hover svg {
+  transform: translate(3px, -3px);
+}
+
+@keyframes line-reveal {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes soft-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes sculpture-drift {
+  0%,
+  100% {
+    transform: scale(1.045) translateX(0);
+  }
+  50% {
+    transform: scale(1.075) translateX(-0.6%);
+  }
+}
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-image {
+    translate: 0 var(--hero-scroll, 0px);
+    animation: sculpture-drift 14s ease-in-out infinite;
+  }
+  .hero-line > span {
+    animation: line-reveal 1s var(--ease-reveal) both;
+  }
+  .hero-line:nth-child(2) > span {
+    animation-delay: 0.12s;
+  }
+  .hero-line:nth-child(3) > span {
+    animation-delay: 0.24s;
+  }
+  .hero-content > .eyebrow {
+    animation: soft-enter 0.8s var(--ease-reveal) 0.05s both;
+  }
+  .hero-description {
+    animation: soft-enter 0.9s var(--ease-reveal) 0.4s both;
+  }
+  .hero-actions {
+    animation: soft-enter 0.9s var(--ease-reveal) 0.55s both;
+  }
+  .hero-proof {
+    animation: soft-enter 0.9s var(--ease-reveal) 0.7s both;
+  }
+  .hero-bottom {
+    animation: soft-enter 0.9s var(--ease-reveal) 0.85s both;
+  }
+  .hero-bottom svg {
+    animation: scroll-cue 2s ease-in-out infinite;
+  }
+  .status-dot {
+    animation: status-pulse 3s ease-in-out infinite;
+  }
+  .mobile-nav:not([hidden]) {
+    animation: soft-enter 0.3s var(--ease-reveal) both;
+  }
+  .page-intro > * {
+    animation: soft-enter 0.7s var(--ease-reveal) both;
+  }
+  .page-intro > :nth-child(2) {
+    animation-delay: 0.06s;
+  }
+  .page-intro > :nth-child(3) {
+    animation-delay: 0.12s;
+  }
+  .page-intro > :nth-child(n + 4) {
+    animation-delay: 0.18s;
+  }
+}

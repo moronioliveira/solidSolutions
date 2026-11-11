@@ -82,9 +82,9 @@
   --surface-light: oklch(0.97 0.003 90);
   --ink: oklch(0.18 0.003 80);
   --success: oklch(0.75 0.16 150);
-  --font-body: "Manrope", sans-serif;
-  --font-heading: "Space Grotesk", sans-serif;
-  --font-code: "IBM Plex Mono", monospace;
+  --font-body: var(--font-manrope), "Manrope", system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-code: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
   --hero-shade: linear-gradient(90deg, var(--background) 0%, transparent 75%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);

@@ -1,21 +1,22 @@
-import { useEffect, type RefObject } from "react";
+import { useEffect } from "react";
 
-/** Progressive enhancement: content stays readable without JavaScript or motion. */
-export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
+/**
+ * Melhoria progressiva: elementos com [data-reveal] surgem ao entrar na tela,
+ * a barra de leitura acompanha a rolagem e os cards de projeto inclinam com o mouse.
+ * Sem JavaScript, ou com movimento reduzido, tudo fica visível e estático.
+ * Reexecuta a cada troca de rota para observar o novo conteúdo.
+ */
+export function useSiteMotion(routeKey: string) {
   useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const root = document.documentElement;
     let dispose = () => {};
 
     function initialize() {
       dispose();
-      if (!root || preference.matches) return;
-      const targets = Array.from(
-        root.querySelectorAll<HTMLElement>(
-          ".capability-band, .section, .section-heading, .project, .solution, .process-step, .concept-note, .contact-band, .contact-band-inner > *, .footer-top > *, .page-intro > *, .about-content > *, .contact-aside, .contact-options, .capability-inner > span, .plan-card, .management-band, .plans-details, .plans-help",
-        ),
-      );
+      if (preference.matches) return;
+
+      const targets = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
       const observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -26,28 +27,26 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
         },
         { threshold: 0.12, rootMargin: "0px 0px -24px 0px" },
       );
-
       targets.forEach((element) => {
         const siblings = Array.from(element.parentElement?.children ?? []);
-        const index = siblings.indexOf(element);
-        element.style.setProperty("--motion-delay", `${Math.min(index, 3) * 95}ms`);
+        const index = Math.max(siblings.indexOf(element), 0);
+        element.style.setProperty("--motion-delay", `${Math.min(index, 3) * 90}ms`);
         element.setAttribute("data-motion", "reveal");
         observer.observe(element);
       });
 
-      const hero = root.querySelector<HTMLElement>(".hero");
+      const hero = document.querySelector<HTMLElement>(".hero");
       let frame = 0;
       function updateScroll() {
         frame = 0;
-        if (!root) return;
-        const maximum = document.documentElement.scrollHeight - window.innerHeight;
+        const maximum = root.scrollHeight - window.innerHeight;
         root.style.setProperty(
           "--reading-progress",
           `${maximum > 0 ? Math.min(1, window.scrollY / maximum) : 0}`,
         );
         if (hero) {
           const bounds = hero.getBoundingClientRect();
-          if (bounds.bottom > 0 && bounds.top < window.innerHeight) {
+          if (bounds.bottom > 0) {
             hero.style.setProperty("--hero-scroll", `${Math.max(0, -bounds.top) * 0.13}px`);
           }
         }
@@ -56,27 +55,21 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
         if (!frame) frame = window.requestAnimationFrame(updateScroll);
       }
       window.addEventListener("scroll", onScroll, { passive: true });
-      window.addEventListener("resize", onScroll);
+      window.addEventListener("resize", onScroll, { passive: true });
       updateScroll();
 
-      const cards = Array.from(root.querySelectorAll<HTMLElement>(".project-art"));
+      const cards = Array.from(document.querySelectorAll<HTMLElement>(".project-art"));
       function move(event: PointerEvent) {
         if (event.pointerType !== "mouse") return;
-        const card = event.currentTarget;
-        if (!(card instanceof HTMLElement)) return;
+        const card = event.currentTarget as HTMLElement;
         const bounds = card.getBoundingClientRect();
-        card.style.setProperty(
-          "--tilt-x",
-          `${((event.clientY - bounds.top) / bounds.height - 0.5) * -7}deg`,
-        );
-        card.style.setProperty(
-          "--tilt-y",
-          `${((event.clientX - bounds.left) / bounds.width - 0.5) * 7}deg`,
-        );
+        const x = ((event.clientY - bounds.top) / bounds.height - 0.5) * -6;
+        const y = ((event.clientX - bounds.left) / bounds.width - 0.5) * 6;
+        card.style.setProperty("--tilt-x", `${x}deg`);
+        card.style.setProperty("--tilt-y", `${y}deg`);
       }
       function reset(event: PointerEvent) {
-        const card = event.currentTarget;
-        if (!(card instanceof HTMLElement)) return;
+        const card = event.currentTarget as HTMLElement;
         card.style.removeProperty("--tilt-x");
         card.style.removeProperty("--tilt-y");
       }
@@ -100,8 +93,6 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
         cards.forEach((card) => {
           card.removeEventListener("pointermove", move);
           card.removeEventListener("pointerleave", reset);
-          card.style.removeProperty("--tilt-x");
-          card.style.removeProperty("--tilt-y");
         });
       };
     }
@@ -112,5 +103,5 @@ export function useSiteMotion(rootRef: RefObject<HTMLDivElement | null>) {
       dispose();
       preference.removeEventListener("change", initialize);
     };
-  }, [rootRef]);
+  }, [routeKey]);
 }

@@ -1,9 +1,12 @@
-export {
-  CapabilityBand,
-  ContactBand,
-  ProcessSection,
-  ProjectGrid,
-  ProjectsSection,
-  SolutionsSection,
-  projects,
-} from "./portfolio-sections";
+export { CapabilityBand } from "./capability-band";
+export { ComparisonSection } from "./comparison-section";
+export { ContactBand } from "./contact-band";
+export { DifferentialsSection } from "./differentials-section";
+export { FaqSection } from "./faq-section";
+export { Hero } from "./hero";
+export { ProcessSection } from "./process-section";
+export { ProjectCard } from "./project-card";
+export { ProjectFilter } from "./project-filter";
+export { ProjectsSection } from "./projects-section";
+export { SectionHeading } from "./section-heading";
+export { ServicesSection, serviceIcons } from "./services-section";

@@ -1,0 +1,593 @@
+/* Estilos específicos de páginas internas e da seção de planos. */
+
+/* ---------- Topo das páginas internas ---------- */
+
+.page-intro {
+  padding: 56px 0 40px;
+}
+.page-intro h1 {
+  max-width: 980px;
+  margin: 20px 0;
+  font-size: clamp(36px, 5.4vw, 68px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.page-intro > p {
+  max-width: 680px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 32px;
+}
+.intro-price {
+  font-size: 15px;
+  color: var(--muted-foreground);
+}
+.intro-price strong {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--foreground);
+}
+
+.breadcrumbs {
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 6px;
+  opacity: 0.5;
+}
+.breadcrumbs a:hover {
+  color: var(--primary);
+}
+.breadcrumbs [aria-current="page"] {
+  color: var(--foreground);
+}
+
+/* ---------- Planos ---------- */
+
+.plans-section {
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at 85% 0%, color-mix(in oklab, var(--primary) 9%, transparent), transparent 55%),
+    var(--background);
+}
+.plans-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+.plan-featured {
+  border-color: color-mix(in oklab, var(--primary) 60%, var(--border));
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 25%, transparent),
+    0 30px 60px -30px color-mix(in oklab, var(--primary) 35%, transparent);
+}
+.plan-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-code);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.plan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--brand-gradient);
+  color: var(--primary-foreground);
+  font-weight: 500;
+}
+.plan-card h3 {
+  margin-top: 22px;
+  font-size: 32px;
+  font-weight: 600;
+}
+.plan-audience {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+.plan-price {
+  display: grid;
+  gap: 4px;
+  margin: 28px 0;
+  padding: 24px 0;
+  border-block: 1px solid var(--border);
+}
+.plan-price strong {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.plan-price span {
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+.plan-price p {
+  margin-top: 10px;
+  font-size: 15px;
+}
+.plan-price b {
+  color: var(--primary);
+}
+.plan-old-price s {
+  opacity: 0.8;
+}
+.plan-features {
+  display: grid;
+  gap: 12px;
+  font-size: 15px;
+}
+.plan-features li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.plan-features svg {
+  margin-top: 4px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+.plan-choice {
+  margin-top: 28px;
+  padding: 20px;
+  border-radius: 8px;
+  background: var(--secondary);
+}
+.plan-choice p {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+.plan-budget {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.plan-cta {
+  margin-top: auto;
+  width: 100%;
+}
+.plan-choice + .plan-cta,
+.plan-budget + .plan-cta {
+  margin-top: 28px;
+}
+.management-band {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  margin-top: 24px;
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.management-band h3 {
+  margin: 14px 0 12px;
+  font-size: 26px;
+}
+.management-band > div > p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.management-price {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.management-price > span,
+.management-price > p {
+  font-size: 14px;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+.management-price strong {
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1;
+}
+.management-price small {
+  font-size: 16px;
+  color: var(--muted-foreground);
+}
+.management-price .btn {
+  margin-top: 12px;
+  justify-self: start;
+}
+.plans-details {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+.maintenance-summary,
+.plans-help {
+  padding: 28px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+.maintenance-summary svg {
+  color: var(--primary);
+  width: 26px;
+  height: 26px;
+}
+.maintenance-summary h3 {
+  margin: 14px 0 8px;
+  font-size: 20px;
+}
+.maintenance-summary p,
+.plans-help p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+.plans-help {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---------- Página de serviço ---------- */
+
+.service-overview {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.service-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--primary);
+}
+.service-overview h2 {
+  margin: 20px 0 16px;
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 600;
+}
+.service-overview-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+.service-ideal {
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.service-ideal h3 {
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+.service-ideal ul,
+.case-highlights {
+  display: grid;
+  gap: 12px;
+  font-size: 15px;
+}
+.service-ideal li,
+.case-highlights li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.service-ideal svg,
+.case-highlights svg {
+  margin-top: 4px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+.deliverables-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 32px;
+}
+.deliverables-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 16px;
+}
+.deliverables-list svg {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* ---------- Estudo de caso ---------- */
+
+.case-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.case-figure figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+.case-body {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  padding-top: 24px;
+}
+.case-facts {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.case-facts dt {
+  font-family: var(--font-code);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.case-facts dd {
+  margin-top: 4px;
+  font-size: 16px;
+}
+.case-facts dd a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.case-text {
+  display: grid;
+  gap: 40px;
+}
+.case-text h2 {
+  margin-bottom: 12px;
+  font-size: 28px;
+  font-weight: 600;
+}
+.case-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+
+/* ---------- Sobre ---------- */
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.about-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.about-content h2 {
+  margin-bottom: 24px;
+  font-size: clamp(30px, 3.6vw, 42px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+.about-content p {
+  margin-bottom: 18px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+
+/* ---------- Contato ---------- */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  padding: 32px 0 96px;
+}
+.contact-aside h2,
+.contact-options h2 {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.contact-aside h2 {
+  margin-bottom: 16px;
+}
+.contact-aside p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+.contact-aside ul {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+  font-size: 16px;
+}
+.contact-aside li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contact-aside li svg {
+  width: 18px;
+  height: 18px;
+  color: var(--primary);
+}
+.contact-facts {
+  display: grid;
+  gap: 18px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.contact-facts dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-code);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.contact-facts dt svg {
+  width: 15px;
+  height: 15px;
+}
+.contact-facts dd {
+  margin-top: 4px;
+  font-size: 16px;
+}
+.contact-facts dd a {
+  font-weight: 700;
+}
+.contact-options {
+  padding: 36px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.contact-options h2 {
+  margin-top: 14px;
+}
+.contact-option-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+.contact-option {
+  justify-content: space-between;
+  width: 100%;
+  min-height: 60px;
+  text-align: left;
+}
+.contact-note {
+  margin-top: 22px;
+  font-size: 15px;
+  color: var(--muted-foreground);
+}
+.contact-note a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Texto corrido (política) ---------- */
+
+.prose {
+  max-width: 760px;
+}
+.prose h2 {
+  margin: 36px 0 12px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.prose h2:first-child {
+  margin-top: 0;
+}
+.prose p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+}
+
+.not-found {
+  padding-bottom: 96px;
+}
+.not-found .related-links {
+  margin-top: 36px;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 1000px) {
+  .plans-grid,
+  .management-band,
+  .plans-details,
+  .service-overview,
+  .case-body,
+  .about-content,
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-intro {
+    padding: 32px 0 24px;
+  }
+  .page-intro h1 {
+    font-size: clamp(32px, 9.5vw, 42px);
+  }
+  .page-intro > p {
+    font-size: 16px;
+  }
+  .intro-actions .btn {
+    width: 100%;
+  }
+  .plan-card,
+  .management-band,
+  .contact-options {
+    padding: 24px;
+  }
+  .plan-price strong {
+    font-size: 46px;
+  }
+  .deliverables-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .service-overview-text p,
+  .case-text p {
+    font-size: 16px;
+  }
+  .contact-layout {
+    padding-bottom: 56px;
+  }
+}
