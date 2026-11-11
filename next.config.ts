@@ -2,6 +2,52 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false,
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+    ];
+  },
+  async redirects() {
+    // Endereço antigo dos detalhes de projeto (?projeto=Nome) agora é /projetos/[slug].
+    return [
+      {
+        source: "/projetos",
+        has: [{ type: "query", key: "projeto", value: "Almeida & Ferraz Advocacia" }],
+        destination: "/projetos/almeida-ferraz-advocacia",
+        permanent: true,
+      },
+      {
+        source: "/projetos",
+        has: [{ type: "query", key: "projeto", value: "Clinica Odontológica Sorriso" }],
+        destination: "/projetos/clinica-odontologica-sorriso",
+        permanent: true,
+      },
+      {
+        source: "/projetos",
+        has: [{ type: "query", key: "projeto", value: "Dra. Camilia Rodrigues - Nutricionista" }],
+        destination: "/projetos/nutricionista-camilia-rodrigues",
+        permanent: true,
+      },
+      {
+        source: "/projetos",
+        has: [{ type: "query", key: "projeto", value: "Construtora Alvorada" }],
+        destination: "/projetos/construtora-alvorada",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -1,72 +1,100 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { IBM_Plex_Mono, Manrope, Space_Grotesk } from "next/font/google";
+import type { ReactNode } from "react";
 import "../src/styles/index.css";
-import { PageTransition } from "@/components/layout/page-transition";
-import { SITE_URL, SHARE_IMAGE } from "@/lib/site";
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/google-tag-manager";
+import { InteractionTracker } from "@/components/analytics/interaction-tracker";
+import { FloatingWhatsApp, MotionRoot, SiteFooter, SiteHeader } from "@/components/layout";
+import { seo } from "@/content/seo";
+import { site } from "@/content/site";
+
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
+  display: "swap",
+});
+
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? SITE_URL),
+  metadataBase: new URL(site.url),
   title: {
-    default: "Solid Solutions | Sites e landing pages que convertem",
-    template: "%s | Solid Solutions",
+    default: seo.pages.home.title,
+    template: seo.titleTemplate,
   },
-  description:
-    "Estúdio digital em Teresina especializado em sites institucionais, landing pages e desenvolvimento web.",
-  authors: [{ name: "Solid Solutions" }],
-  creator: "Solid Solutions",
-  publisher: "Solid Solutions",
+  description: seo.pages.home.description,
+  keywords: [...seo.keywords],
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
   category: "technology",
-  applicationName: "Solid Solutions",
-  keywords: [
-    "criação de sites",
-    "site institucional",
-    "landing page",
-    "desenvolvimento web",
-    "Teresina",
-    "Piauí",
-  ],
-  alternates: { canonical: SITE_URL },
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Solid Solutions | Sites e landing pages que convertem",
-    description:
-      "Design, tecnologia e estratégia para criar uma presença digital que gera oportunidades.",
-    url: SITE_URL,
     type: "website",
     locale: "pt_BR",
-    siteName: "Solid Solutions",
-    images: [{ url: SHARE_IMAGE, width: 1200, height: 630, alt: "Solid Solutions" }],
+    url: "/",
+    siteName: site.name,
+    title: seo.pages.home.title,
+    description: seo.pages.home.description,
+    images: [{ url: site.ogImage, width: 1200, height: 630, alt: `Logo da ${site.name}` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Solid Solutions | Sites e landing pages que convertem",
-    description: "Design, tecnologia e estratégia para sua presença digital.",
-    images: [SHARE_IMAGE],
+    title: seo.pages.home.title,
+    description: seo.pages.home.description,
+    images: [site.ogImage],
   },
-  icons: { icon: "/favicon.png" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/favicon-192.png", sizes: "192x192" }],
+  },
+  formatDetection: { telephone: false },
+  ...(googleVerification ? { verification: { google: googleVerification } } : {}),
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export const viewport: Viewport = {
+  themeColor: "#151413",
+  colorScheme: "dark",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${manrope.variable} ${spaceGrotesk.variable} ${plexMono.variable}`}>
       <body>
-        <PageTransition>{children}</PageTransition>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              name: "Solid Solutions",
-              url: SITE_URL,
-              logo: `${SITE_URL}/favicon.png`,
-              image: SHARE_IMAGE,
-              description:
-                "Estúdio digital especializado em sites institucionais, landing pages e desenvolvimento web.",
-              areaServed: "Brasil",
-              serviceType: ["Criação de sites", "Landing pages", "Desenvolvimento web"],
-              sameAs: ["https://wa.me/5586994291131"],
-            }),
-          }}
-        />
+        <GoogleTagManagerNoScript />
+        <a href="#conteudo" className="skip-link">
+          Pular para o conteúdo
+        </a>
+        <MotionRoot />
+        <SiteHeader />
+        <main id="conteudo">{children}</main>
+        <SiteFooter />
+        <FloatingWhatsApp />
+        <InteractionTracker />
+        <GoogleTagManager />
       </body>
     </html>
   );

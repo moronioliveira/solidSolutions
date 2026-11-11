@@ -1,12 +1,25 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+import { projects } from "@/content/projects";
+import { seo } from "@/content/seo";
+import { services } from "@/content/services";
+import { absoluteUrl } from "@/content/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  return ["", "/projetos", "/servicos", "/sobre", "/contato"].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: now,
-    changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : 0.8,
-  }));
+  const lastModified = new Date(`${seo.lastUpdated}T12:00:00-03:00`);
+  const entry = (
+    path: string,
+    priority: number,
+    changeFrequency: "weekly" | "monthly" | "yearly" = "monthly",
+  ) => ({ url: absoluteUrl(path), lastModified, changeFrequency, priority });
+
+  return [
+    entry("/", 1, "weekly"),
+    entry("/servicos", 0.9),
+    ...services.map((service) => entry(`/servicos/${service.slug}`, 0.9)),
+    entry("/projetos", 0.8),
+    ...projects.map((project) => entry(`/projetos/${project.slug}`, 0.6)),
+    entry("/sobre", 0.6),
+    entry("/contato", 0.7),
+    entry("/politica-de-privacidade", 0.2, "yearly"),
+  ];
 }

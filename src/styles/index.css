@@ -3,4 +3,8 @@
 @source "../../app";
 @import "tw-animate-css";
 @import "./base.css";
+@import "./site.css";
+@import "./pages.css";
+@import "./sections.css";
+@import "./motion.css";
 @import "./accessibility.css";
