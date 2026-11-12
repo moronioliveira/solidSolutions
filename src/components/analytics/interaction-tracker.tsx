@@ -3,6 +3,22 @@
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/tracking";
 
+const CAMPAIGN_KEY = "utm_campaign";
+
+/** utm_campaign da visita (guardado na sessão para sobreviver a navegação); "organico" se não houver. */
+function getCampaign(): string {
+  try {
+    const fromUrl = new URLSearchParams(window.location.search).get("utm_campaign");
+    if (fromUrl) {
+      sessionStorage.setItem(CAMPAIGN_KEY, fromUrl);
+      return fromUrl;
+    }
+    return sessionStorage.getItem(CAMPAIGN_KEY) ?? "organico";
+  } catch {
+    return "organico";
+  }
+}
+
 /**
  * Envia para o dataLayer:
  * - `whatsapp_click` em todo link marcado com data-cta="whatsapp";
@@ -16,6 +32,7 @@ export function InteractionTracker() {
       if (!link) return;
       trackEvent("whatsapp_click", {
         cta_location: link.dataset.ctaLocation ?? "desconhecido",
+        campaign: getCampaign(),
         page_path: window.location.pathname,
       });
     }
