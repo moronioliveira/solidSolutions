@@ -16,7 +16,6 @@ export function Hero() {
         priority
         fetchPriority="high"
         sizes="100vw"
-        placeholder="blur"
       />
       <div className="site-container hero-content">
         <span className="eyebrow">

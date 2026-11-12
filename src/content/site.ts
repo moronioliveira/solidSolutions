@@ -32,7 +32,25 @@ export const site = {
  * Perfis oficiais da marca. Cada link adicionado aqui entra no `sameAs` dos dados
  * estruturados, o que ajuda Google e assistentes de IA a confirmar a identidade da marca.
  */
-export const socialLinks: { label: string; url: string }[] = [];
+export const socialLinks: {
+  label: string;
+  network: "instagram" | "tiktok";
+  handle: string;
+  url: string;
+}[] = [
+  {
+    label: "Instagram",
+    network: "instagram",
+    handle: "@solidsolutionsdigital",
+    url: "https://www.instagram.com/solidsolutionsdigital/",
+  },
+  {
+    label: "TikTok",
+    network: "tiktok",
+    handle: "@solid_solution",
+    url: "https://www.tiktok.com/@solid_solution",
+  },
+];
 
 export const navigation = [
   { label: "Início", href: "/" },

@@ -4,7 +4,8 @@ import { ArrowUpRight, Globe, MessageCircle } from "lucide-react";
 import logo from "@/assets/brand/solid-solutions-logo.png";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { services } from "@/content/services";
-import { site } from "@/content/site";
+import { site, socialLinks } from "@/content/site";
+import { SocialIcon } from "./social-icon";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -54,6 +55,18 @@ export function SiteFooter() {
             <span>
               <Globe size={16} aria-hidden="true" /> Atendimento online em todo o Brasil
             </span>
+            {socialLinks.map((social) => (
+              <a
+                key={social.network}
+                href={social.url}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label={`${social.label} da ${site.name}: ${social.handle}`}
+                data-social={social.network}
+              >
+                <SocialIcon network={social.network} /> {social.handle}
+              </a>
+            ))}
           </address>
           <WhatsAppLink location="footer-cta" className="footer-cta">
             Vamos criar juntos <ArrowUpRight size={18} aria-hidden="true" />
