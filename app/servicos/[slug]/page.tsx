@@ -13,6 +13,7 @@ import {
 } from "@/components/sections";
 import { JsonLd } from "@/components/seo/json-ld";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
+import { niches } from "@/content/niches";
 import { projects } from "@/content/projects";
 import { getService, services } from "@/content/services";
 import { formatBRL, getPlan } from "@/lib/pricing/commercial";
@@ -46,6 +47,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const plan = getPlan(service.planName);
   const Icon = serviceIcons[service.icon];
   const related = projects.filter((project) => project.serviceSlug === service.slug).slice(0, 2);
+  const segments = niches.filter((niche) => niche.serviceSlug === service.slug);
   const others = services.filter((item) => item.slug !== service.slug);
   const crumbs: Crumb[] = [
     { name: "Início", path: "/" },
@@ -160,8 +162,20 @@ export default async function ServicePage({ params }: ServicePageProps) {
       />
 
       <section className="section site-container" aria-labelledby="other-services">
-        <SectionHeading id="other-services" eyebrow="Veja também" title="Outros serviços" />
+        <SectionHeading
+          id="other-services"
+          eyebrow="Veja também"
+          title="Outros serviços e segmentos"
+        />
         <ul className="related-links">
+          {segments.map((niche) => (
+            <li key={niche.slug}>
+              <Link href={`/segmentos/${niche.slug}`}>
+                <span>{niche.linkLabel}</span>
+                <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </li>
+          ))}
           {others.map((item) => (
             <li key={item.slug}>
               <Link href={`/servicos/${item.slug}`}>

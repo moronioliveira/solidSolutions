@@ -5,7 +5,7 @@
  * Atualize `lastUpdated` sempre que mudar o conteúdo do site.
  */
 export const seo = {
-  lastUpdated: "2026-11-10",
+  lastUpdated: "2026-11-12",
   titleTemplate: "%s | Solid Solutions",
   keywords: [
     "criação de sites",

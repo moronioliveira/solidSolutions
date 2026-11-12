@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, Check } from "lucide-react";
 import { PageIntro } from "@/components/layout";
 import { ContactBand, ProjectCard, SectionHeading } from "@/components/sections";
+import { niches } from "@/content/niches";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getProject, projects } from "@/content/projects";
 import { getService } from "@/content/services";
@@ -40,6 +41,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const path = `/projetos/${project.slug}`;
   const { title, description } = describe(project);
   const service = getService(project.serviceSlug);
+  const niche = niches.find((item) => item.projectSlug === project.slug);
   const others = projects.filter((item) => item.slug !== project.slug).slice(0, 2);
   const crumbs: Crumb[] = [
     { name: "Início", path: "/" },
@@ -60,7 +62,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       >
         {project.liveUrl && (
           <div className="intro-actions">
-            <a href={project.liveUrl} target="_blank" rel="noopener" className="btn btn-primary btn-lg">
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener"
+              className="btn btn-primary btn-lg"
+            >
               Ver o site publicado <ArrowUpRight aria-hidden="true" />
             </a>
           </div>
@@ -69,7 +76,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <section className="section section-tight site-container" aria-label="Prévia do projeto">
         <figure className="case-figure" data-reveal>
-          <Image src={project.image} alt={project.imageAlt} sizes="(max-width: 1280px) 100vw, 1280px" placeholder="blur" priority />
+          <Image
+            src={project.image}
+            alt={project.imageAlt}
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            placeholder="blur"
+            priority
+          />
           <figcaption>{project.imageAlt}</figcaption>
         </figure>
       </section>
@@ -116,6 +129,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </ul>
           </div>
+          {niche && (
+            <div data-reveal>
+              <h2>Quer algo assim?</h2>
+              <p>
+                Veja como funciona o nosso{" "}
+                <Link href={`/segmentos/${niche.slug}`}>{niche.linkLabel.toLowerCase()}</Link>, com
+                o que a página precisa ter, cuidados do segmento e preços.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

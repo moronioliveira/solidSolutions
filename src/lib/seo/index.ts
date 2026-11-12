@@ -1,6 +1,7 @@
 export { pageMetadata } from "./metadata";
 export {
   faqPage,
+  nicheSchema,
   pageGraph,
   projectSchema,
   schemaIds,

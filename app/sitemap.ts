@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { niches } from "@/content/niches";
 import { projects } from "@/content/projects";
 import { seo } from "@/content/seo";
 import { services } from "@/content/services";
@@ -16,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/", 1, "weekly"),
     entry("/servicos", 0.9),
     ...services.map((service) => entry(`/servicos/${service.slug}`, 0.9)),
+    ...niches.map((niche) => entry(`/segmentos/${niche.slug}`, 0.8)),
     entry("/projetos", 0.8),
     ...projects.map((project) => entry(`/projetos/${project.slug}`, 0.6)),
     entry("/sobre", 0.6),
