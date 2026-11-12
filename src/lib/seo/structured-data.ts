@@ -30,7 +30,8 @@ function organization() {
     "@type": ["Organization", "OnlineBusiness"],
     "@id": schemaIds.organization,
     name: site.name,
-    alternateName: "Solid Solutions Estúdio Digital",
+    // "Solid Solutions Digital" casa com o domínio e diferencia a marca de outras "Solid Solutions".
+    alternateName: ["Solid Solutions Digital", "Solid Solutions Estúdio Digital"],
     slogan: site.tagline,
     description: site.shortDescription,
     url: site.url,
@@ -116,6 +117,7 @@ function website() {
     "@id": schemaIds.website,
     url: site.url,
     name: site.name,
+    alternateName: "Solid Solutions Digital",
     description: site.shortDescription,
     inLanguage: "pt-BR",
     publisher: { "@id": schemaIds.organization },

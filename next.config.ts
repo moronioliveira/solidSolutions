@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    // Embute o CSS no HTML: remove a requisição que bloqueava a renderização
+    // e antecipa a pintura do hero (melhora o LCP no celular).
+    inlineCss: true,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
   },
