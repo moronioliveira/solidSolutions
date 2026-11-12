@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
   images: {
-    formats: ["image/avif", "image/webp"],
+    // Só WebP: AVIF é menor, mas decodifica devagar em celulares fracos e atrasava o LCP do hero.
+    formats: ["image/webp"],
   },
   async headers() {
     return [
