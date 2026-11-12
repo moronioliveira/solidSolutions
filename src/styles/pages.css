@@ -63,7 +63,11 @@
 .plans-section {
   border-top: 1px solid var(--border);
   background:
-    radial-gradient(ellipse at 85% 0%, color-mix(in oklab, var(--primary) 9%, transparent), transparent 55%),
+    radial-gradient(
+      ellipse at 85% 0%,
+      color-mix(in oklab, var(--primary) 9%, transparent),
+      transparent 55%
+    ),
     var(--background);
 }
 .plans-grid {
@@ -81,7 +85,8 @@
 }
 .plan-featured {
   border-color: color-mix(in oklab, var(--primary) 60%, var(--border));
-  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 25%, transparent),
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 25%, transparent),
     0 30px 60px -30px color-mix(in oklab, var(--primary) 35%, transparent);
 }
 .plan-kicker {
@@ -590,4 +595,25 @@
   .contact-layout {
     padding-bottom: 56px;
   }
+}
+
+/* Páginas por segmento (/segmentos/[slug]) */
+.service-overview-text p + p {
+  margin-top: 16px;
+}
+.service-ideal h3:has(svg),
+.differential h3:has(svg) {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.differential h3 svg {
+  margin-top: 3px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+.service-ideal > p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted-foreground);
 }

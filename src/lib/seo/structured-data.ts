@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/content/faq";
+import type { Niche } from "@/content/niches";
 import type { Project } from "@/content/projects";
 import { seo } from "@/content/seo";
 import type { Service } from "@/content/services";
@@ -237,5 +238,29 @@ export function projectSchema(project: Project) {
     image: absoluteUrl(project.image.src),
     inLanguage: "pt-BR",
     creator: { "@id": schemaIds.organization },
+  };
+}
+
+export function nicheSchema(niche: Niche) {
+  const plan = getPlan(niche.planName);
+  const url = absoluteUrl(`/segmentos/${niche.slug}`);
+  return {
+    "@type": "Service",
+    "@id": `${url}#servico`,
+    name: niche.headline,
+    serviceType: "Criação de sites e landing pages",
+    description: niche.summary,
+    url,
+    provider: { "@id": schemaIds.organization },
+    areaServed: { "@type": "Country", name: site.serviceArea },
+    audience: { "@type": "BusinessAudience", audienceType: niche.name },
+    offers: {
+      "@type": "Offer",
+      price: plan.price,
+      priceCurrency: "BRL",
+      availability: "https://schema.org/InStock",
+      url,
+      description: `Plano ${plan.name}: ${plan.purpose}. Manutenção de R$ ${plan.monthly}/mês.`,
+    },
   };
 }

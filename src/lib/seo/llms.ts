@@ -1,4 +1,5 @@
 import { faq } from "@/content/faq";
+import { niches } from "@/content/niches";
 import { projects } from "@/content/projects";
 import { seo } from "@/content/seo";
 import { services } from "@/content/services";
@@ -35,7 +36,17 @@ export function buildLlmsTxt() {
     "",
     "## Páginas de serviço",
     "",
-    ...services.map((service) => `- [${service.headline}](${absoluteUrl(`/servicos/${service.slug}`)}): ${service.summary}`),
+    ...services.map(
+      (service) =>
+        `- [${service.headline}](${absoluteUrl(`/servicos/${service.slug}`)}): ${service.summary}`,
+    ),
+    "",
+    "## Páginas por segmento",
+    "",
+    ...niches.map(
+      (niche) =>
+        `- [${niche.headline}](${absoluteUrl(`/segmentos/${niche.slug}`)}): ${niche.summary}`,
+    ),
     "",
     "## Portfólio",
     "",

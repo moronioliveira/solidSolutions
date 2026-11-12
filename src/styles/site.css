@@ -309,7 +309,12 @@ a {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, var(--background) 0%, color-mix(in oklab, var(--background) 70%, transparent) 50%, transparent 80%),
+    linear-gradient(
+      90deg,
+      var(--background) 0%,
+      color-mix(in oklab, var(--background) 70%, transparent) 50%,
+      transparent 80%
+    ),
     linear-gradient(0deg, var(--background) 0%, transparent 30%);
 }
 .hero-content {
@@ -538,7 +543,11 @@ a {
   border-radius: 10px;
   border: 1px solid var(--border);
   background:
-    radial-gradient(circle at 80% 0%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 55%),
+    radial-gradient(
+      circle at 80% 0%,
+      color-mix(in oklab, var(--primary) 22%, transparent),
+      transparent 55%
+    ),
     var(--card);
   transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
   transition:
@@ -758,8 +767,8 @@ a {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
-  gap: 48px;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1.1fr;
+  gap: 40px;
   padding-bottom: 56px;
 }
 .footer-brand img {
@@ -962,7 +971,12 @@ a {
     opacity: 0.5;
   }
   .hero::after {
-    background: linear-gradient(180deg, var(--background) 30%, color-mix(in oklab, var(--background) 55%, transparent) 70%, var(--background) 100%);
+    background: linear-gradient(
+      180deg,
+      var(--background) 30%,
+      color-mix(in oklab, var(--background) 55%, transparent) 70%,
+      var(--background) 100%
+    );
   }
   .hero-description {
     font-size: 16px;

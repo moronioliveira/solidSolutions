@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, Globe, MessageCircle } from "lucide-react";
 import logo from "@/assets/brand/solid-solutions-logo.png";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
+import { niches } from "@/content/niches";
 import { services } from "@/content/services";
 import { site, socialLinks } from "@/content/site";
 import { SocialIcon } from "./social-icon";
@@ -27,6 +28,16 @@ export function SiteFooter() {
             <li>
               <Link href="/servicos#planos">Planos e preços</Link>
             </li>
+          </ul>
+        </nav>
+        <nav aria-label="Segmentos">
+          <h2>Segmentos</h2>
+          <ul>
+            {niches.map((niche) => (
+              <li key={niche.slug}>
+                <Link href={`/segmentos/${niche.slug}`}>{niche.linkLabel}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <nav aria-label="Empresa">
