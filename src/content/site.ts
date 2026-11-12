@@ -3,7 +3,7 @@
  * Altere aqui e a mudança aparece em todos os lugares.
  */
 export const site = {
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://solid-solutions-portifolio.vercel.app").replace(
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://solidsolutionsdigital.com.br").replace(
     /\/$/,
     "",
   ),
