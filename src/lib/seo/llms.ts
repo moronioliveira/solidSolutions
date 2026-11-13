@@ -4,7 +4,13 @@ import { projects } from "@/content/projects";
 import { seo } from "@/content/seo";
 import { services } from "@/content/services";
 import { absoluteUrl, site } from "@/content/site";
-import { adBudget, adManagement, commercialPlans, formatBRL } from "@/lib/pricing/commercial";
+import {
+  adBudget,
+  adManagement,
+  commercialPlans,
+  formatBRL,
+  maintenance,
+} from "@/lib/pricing/commercial";
 
 /**
  * Gera o /llms.txt: um resumo em Markdown com os fatos principais da marca,
@@ -29,9 +35,9 @@ export function buildLlmsTxt() {
     "",
     ...commercialPlans.map(
       (plan) =>
-        `- Plano ${plan.name} (${plan.purpose}): ${formatBRL(plan.price)} de pagamento único + ${formatBRL(plan.monthly)}/mês de hospedagem, manutenção e suporte. Inclui: ${plan.features.join("; ")}.`,
+        `- Plano ${plan.name} (${plan.purpose}): ${formatBRL(plan.price)} de pagamento único. Inclui: ${plan.features.join("; ")}.${plan.requirement ? ` ${plan.requirement}` : ""}`,
     ),
-    `- Gestão mensal de Google Ads (opcional): ${formatBRL(adManagement.monthly)}/mês, além da manutenção.`,
+    `- Adicionais mensais opcionais, fora do valor dos planos: manutenção da página por ${formatBRL(maintenance.monthly)}/mês, com as alterações do mês incluídas (sem manutenção, ${formatBRL(maintenance.singleChange)} por alteração), e gestão de Google Ads por ${formatBRL(adManagement.monthly)}/mês (sem fidelidade).`,
     `- Verba de anúncios paga diretamente ao Google; sugestão inicial de ${formatBRL(adBudget.minimumDaily)} a ${formatBRL(adBudget.maximumDaily)} por dia.`,
     "",
     "## Páginas de serviço",

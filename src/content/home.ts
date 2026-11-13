@@ -6,7 +6,7 @@ export const hero = {
   title: ["Criação de sites e", "landing pages que", "geram clientes."],
   description:
     "Unimos design, tecnologia e SEO para criar páginas rápidas, encontráveis no Google e feitas para levar o visitante direto ao seu WhatsApp.",
-  proof: ["Pronto em poucos dias", "Hospedagem e suporte inclusos", "A partir de R$ 250"],
+  proof: ["Pronto em poucos dias", "Pagamento único", "A partir de R$ 250"],
 } as const;
 
 export const capabilities = [
@@ -58,7 +58,7 @@ export const processSteps = [
   {
     icon: "rocket",
     title: "Lançar",
-    text: "Revisamos, publicamos, enviamos ao Google e seguimos com hospedagem, monitoramento e suporte.",
+    text: "Revisamos, publicamos e enviamos ao Google. Se quiser, seguimos com manutenção e gestão de anúncios.",
     deliverable: "Site no ar, indexado e com suporte",
   },
 ] as const;
@@ -68,7 +68,7 @@ export const promises = [
   "Preço publicado antes da primeira conversa",
   "Contato direto com quem cria o seu site",
   "SEO técnico e dados estruturados inclusos",
-  "Hospedagem, HTTPS e suporte no mesmo plano",
+  "Publicação com HTTPS e domínio configurado",
 ] as const;
 
 /**
@@ -112,7 +112,7 @@ export const comparison = {
       values: ["yes", "no", "yes"],
     },
     {
-      label: "Hospedagem e suporte no mesmo valor mensal",
+      label: "Manutenção opcional com hospedagem e suporte por R$ 50/mês",
       values: ["yes", "partial", "partial"],
     },
     {
