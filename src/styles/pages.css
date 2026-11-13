@@ -75,6 +75,22 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+/* Em 3 colunas, cada cartão usa as linhas da grade (subgrid): cabeçalho, preço, itens,
+   extras e botão ficam na mesma altura nos três planos. */
+@media (min-width: 1101px) {
+  .plans-grid {
+    row-gap: 0;
+  }
+  .plans-grid .plan-card {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .plans-grid .plan-cta {
+    align-self: end;
+  }
+}
 .plan-card {
   display: flex;
   flex-direction: column;
@@ -208,6 +224,7 @@
   margin-top: auto;
   width: 100%;
 }
+.plan-extra + .plan-cta,
 .plan-choice + .plan-cta,
 .plan-budget + .plan-cta {
   margin-top: 28px;
