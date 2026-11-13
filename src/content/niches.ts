@@ -96,7 +96,7 @@ export const niches: Niche[] = [
       {
         question: "Quanto custa a landing page para advogado?",
         answer:
-          "No plano Essencial, a landing page custa R$ 250 de pagamento único, mais R$ 50 por mês de hospedagem, HTTPS e suporte. Com a campanha no Google Ads configurada, o plano Performance custa R$ 550.",
+          "No plano Essencial, a landing page custa R$ 250 de pagamento único. A manutenção mensal de R$ 50 é opcional e cobrada à parte. Com a campanha no Google Ads configurada, o plano Performance custa R$ 550.",
       },
     ],
   },
@@ -164,7 +164,7 @@ export const niches: Niche[] = [
       {
         question: "Quanto custa o site para dentista?",
         answer:
-          "A landing page do plano Essencial custa R$ 250 de pagamento único, mais R$ 50 por mês de hospedagem e suporte. Com campanha no Google Ads, o plano Performance custa R$ 550.",
+          "A landing page do plano Essencial custa R$ 250 de pagamento único. A manutenção mensal de R$ 50 é opcional e cobrada à parte. Com campanha no Google Ads, o plano Performance custa R$ 550.",
       },
     ],
   },
@@ -232,7 +232,7 @@ export const niches: Niche[] = [
       {
         question: "Quanto custa o site para nutricionista?",
         answer:
-          "A landing page do plano Essencial custa R$ 250 de pagamento único, mais R$ 50 por mês de hospedagem e suporte. Com campanha no Google Ads, o plano Performance custa R$ 550.",
+          "A landing page do plano Essencial custa R$ 250 de pagamento único. A manutenção mensal de R$ 50 é opcional e cobrada à parte. Com campanha no Google Ads, o plano Performance custa R$ 550.",
       },
     ],
   },
@@ -300,7 +300,7 @@ export const niches: Niche[] = [
       {
         question: "Quanto custa o site para construtora?",
         answer:
-          "O valor depende do número de páginas e seções. Os planos começam em R$ 250 de pagamento único, mais R$ 50 por mês de hospedagem e suporte, e sites institucionais maiores têm o valor definido na proposta.",
+          "O valor depende do número de páginas e seções. Os planos começam em R$ 250 de pagamento único, com manutenção mensal opcional de R$ 50 cobrada à parte, e sites institucionais maiores têm o valor definido na proposta.",
       },
     ],
   },

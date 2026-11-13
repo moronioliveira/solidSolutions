@@ -80,7 +80,7 @@ export default async function NichePage({ params }: NichePageProps) {
             Pedir orçamento no WhatsApp <ArrowUpRight aria-hidden="true" />
           </WhatsAppLink>
           <span className="intro-price">
-            A partir de <strong>{formatBRL(plan.price)}</strong> + {formatBRL(plan.monthly)}/mês
+            A partir de <strong>{formatBRL(plan.price)}</strong> (pagamento único)
           </span>
         </div>
       </PageIntro>
@@ -106,7 +106,7 @@ export default async function NichePage({ params }: NichePageProps) {
             id="niche-essentials"
             eyebrow={`Feito para ${niche.name.toLowerCase()}`}
             title="O que a sua página precisa ter"
-            description={`Tudo isso entra no plano ${plan.name}: ${formatBRL(plan.price)} de pagamento único e ${formatBRL(plan.monthly)}/mês de hospedagem, manutenção e suporte.`}
+            description={`Tudo isso entra no plano ${plan.name}: ${formatBRL(plan.price)} de pagamento único. Manutenção mensal é opcional e cobrada à parte.`}
           />
           <div className="benefits-grid">
             {niche.essentials.map((item) => (

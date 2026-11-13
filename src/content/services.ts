@@ -16,7 +16,7 @@ export interface Service {
   deliverables: string[];
   benefits: { title: string; text: string }[];
   /** Plano relacionado em src/lib/pricing/commercial.ts */
-  planName: "Essencial" | "Performance";
+  planName: "Essencial" | "Performance" | "Google Ads";
   whatsappMessage: string;
   faq: FaqItem[];
 }
@@ -29,7 +29,7 @@ export const services: Service[] = [
     headline: "Criação de landing page profissional",
     seoTitle: "Criação de Landing Page Profissional",
     seoDescription:
-      "Landing page sob medida, rápida no celular, com SEO, dados estruturados e botão de WhatsApp. A partir de R$ 250 com hospedagem e suporte inclusos.",
+      "Landing page sob medida, rápida no celular, com SEO, dados estruturados e botão de WhatsApp. A partir de R$ 250, pagamento único.",
     summary:
       "Uma página, um objetivo. Transformamos sua oferta em uma página clara, rápida e pensada para levar o visitante até o WhatsApp.",
     intro:
@@ -47,7 +47,7 @@ export const services: Service[] = [
       "Botões de WhatsApp com mensagem pronta",
       "SEO on-page: título, descrição, headings e prévia de compartilhamento",
       "Dados estruturados (Schema.org) do seu negócio",
-      "Hospedagem, domínio configurado, HTTPS e monitoramento",
+      "Publicação com HTTPS e domínio configurado",
     ],
     benefits: [
       {
@@ -70,7 +70,7 @@ export const services: Service[] = [
       {
         question: "Quanto custa uma landing page?",
         answer:
-          "Na Solid Solutions, a landing page do plano Essencial custa R$ 250 de pagamento único, mais R$ 50 por mês de hospedagem, HTTPS, monitoramento e suporte para pequenas alterações.",
+          "Na Solid Solutions, a landing page do plano Essencial custa R$ 250 de pagamento único. A manutenção mensal, com monitoramento e pequenas alterações, é opcional e custa R$ 50 por mês, cobrada à parte.",
       },
       {
         question: "Em quanto tempo a landing page fica pronta?",
@@ -114,7 +114,7 @@ export const services: Service[] = [
       "Portfólio, galeria ou cases da empresa",
       "SEO local: Google, mapas e buscas na sua cidade",
       "Dados estruturados, sitemap e robots configurados",
-      "Hospedagem, HTTPS, monitoramento e suporte",
+      "Publicação com HTTPS e domínio configurado",
     ],
     benefits: [
       {
@@ -137,7 +137,7 @@ export const services: Service[] = [
       {
         question: "Quanto custa um site institucional?",
         answer:
-          "O valor depende da quantidade de páginas e funcionalidades. Projetos partem do plano Essencial (R$ 250 + R$ 50/mês) e recebem uma proposta personalizada após uma conversa pelo WhatsApp.",
+          "O valor depende da quantidade de páginas e funcionalidades. Projetos partem do plano Essencial (R$ 250, pagamento único) e recebem uma proposta personalizada após uma conversa pelo WhatsApp.",
       },
       {
         question: "Quantas páginas um site institucional precisa ter?",
@@ -147,7 +147,7 @@ export const services: Service[] = [
       {
         question: "Vou conseguir atualizar o site?",
         answer:
-          "Pequenas alterações de textos, fotos e telefones estão incluídas na manutenção mensal. Basta pedir pelo WhatsApp.",
+          "Com a manutenção mensal (R$ 50 por mês), as pequenas alterações de textos, fotos e telefones daquele mês estão incluídas. Sem ela, cada alteração custa R$ 30. Basta pedir pelo WhatsApp.",
       },
     ],
   },
@@ -175,7 +175,7 @@ export const services: Service[] = [
       "Lista de palavras negativas para evitar cliques inúteis",
       "Anúncios escritos para o seu público",
       "Tags de conversão para medir cliques no WhatsApp",
-      "Landing page inclusa no plano Performance",
+      "Google Tag Manager, GA4 e Microsoft Clarity configurados",
     ],
     benefits: [
       {
@@ -191,10 +191,15 @@ export const services: Service[] = [
         text: "Saiba quais palavras e anúncios geram conversas no WhatsApp.",
       },
     ],
-    planName: "Performance",
+    planName: "Google Ads",
     whatsappMessage:
-      "Olá! Vi a página de Google Ads da Solid Solutions e quero saber mais sobre o plano Performance.",
+      "Olá! Vi a página de Google Ads da Solid Solutions e quero saber mais sobre a configuração da minha campanha.",
     faq: [
+      {
+        question: "Quanto custa configurar uma campanha no Google Ads?",
+        answer:
+          "O plano Google Ads custa R$ 300 de pagamento único e inclui a campanha de Pesquisa, palavras-chave, palavras negativas, anúncios, Google Tag Manager, GA4 e a conversão de cliques no WhatsApp. É para quem já tem site; quem ainda não tem pode escolher o plano Performance, que inclui a landing page por R$ 550.",
+      },
       {
         question: "Quanto preciso investir no Google Ads?",
         answer:
@@ -203,7 +208,7 @@ export const services: Service[] = [
       {
         question: "A gestão mensal é obrigatória?",
         answer:
-          "Não. O plano Performance já inclui a configuração inicial. A gestão contínua, com otimização semanal e relatório mensal, é opcional e custa R$ 150 por mês.",
+          "Não. Os planos Performance e Google Ads já incluem a configuração inicial. A gestão contínua, com otimização semanal e relatório mensal, é opcional, sem fidelidade, e custa R$ 250 por mês.",
       },
       {
         question: "Vocês garantem resultados no Google Ads?",

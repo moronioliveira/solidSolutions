@@ -12,7 +12,7 @@ export const faq: FaqItem[] = [
   {
     question: "Quanto custa criar um site ou landing page com a Solid Solutions?",
     answer:
-      "O plano Essencial custa R$ 250 de pagamento único e o plano Performance, com campanha no Google Ads, custa R$ 550. Os dois têm manutenção de R$ 50 por mês, que inclui hospedagem, HTTPS, monitoramento e suporte para pequenas alterações.",
+      "O plano Essencial custa R$ 250 de pagamento único e o plano Performance, com landing page e campanha no Google Ads, custa R$ 550. Para quem já tem site, o plano Google Ads configura só a campanha por R$ 300. Todos são pagamento único; a manutenção mensal (R$ 50) e a gestão de anúncios (R$ 250/mês) são adicionais opcionais, cobrados à parte.",
   },
   {
     question: "Em quanto tempo meu site fica pronto?",
@@ -32,11 +32,11 @@ export const faq: FaqItem[] = [
   {
     question: "Preciso ter domínio e hospedagem?",
     answer:
-      "Não. A hospedagem está incluída na manutenção mensal. Se você ainda não tem domínio (seunegocio.com.br), orientamos o registro, que custa cerca de R$ 40 por ano no Registro.br.",
+      "Não precisa se preocupar. Publicamos a página com HTTPS em uma hospedagem no seu nome, que na maioria dos casos é gratuita. Se quiser que a gente cuide da hospedagem, do monitoramento e das alterações, a manutenção mensal opcional custa R$ 50. O domínio (seunegocio.com.br) custa cerca de R$ 40 por ano no Registro.br, e orientamos o registro.",
   },
   {
     question: "Posso pedir alterações depois que o site estiver no ar?",
     answer:
-      "Sim. Pequenas alterações de textos, fotos e telefones estão incluídas na manutenção mensal. Mudanças maiores, como novas páginas, são orçadas à parte.",
+      "Sim. Com a manutenção mensal (R$ 50, paga uma vez por mês), todas as pequenas alterações de textos, fotos e telefones daquele mês estão incluídas. Sem a manutenção, cada alteração custa R$ 30. Mudanças maiores, como novas páginas, são orçadas à parte.",
   },
 ];

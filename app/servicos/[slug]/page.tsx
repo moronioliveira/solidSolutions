@@ -82,7 +82,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             Pedir orçamento no WhatsApp <ArrowUpRight aria-hidden="true" />
           </WhatsAppLink>
           <span className="intro-price">
-            A partir de <strong>{formatBRL(plan.price)}</strong> + {formatBRL(plan.monthly)}/mês
+            A partir de <strong>{formatBRL(plan.price)}</strong> (pagamento único)
           </span>
         </div>
       </PageIntro>
@@ -111,7 +111,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             id="service-deliverables"
             eyebrow="O que está incluído"
             title="Tudo o que você recebe"
-            description={`Incluído no plano ${plan.name}: ${formatBRL(plan.price)} de pagamento único e ${formatBRL(plan.monthly)}/mês de hospedagem, manutenção e suporte.`}
+            description={`Incluído no plano ${plan.name}: ${formatBRL(plan.price)} de pagamento único. Manutenção mensal é opcional e cobrada à parte.`}
           />
           <ul className="deliverables-list">
             {service.deliverables.map((item) => (

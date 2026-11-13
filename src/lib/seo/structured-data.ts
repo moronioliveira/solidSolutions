@@ -23,7 +23,8 @@ export interface Crumb {
   path: string;
 }
 
-const priceRange = `R$ ${commercialPlans[0].price} – R$ ${commercialPlans[commercialPlans.length - 1].price}`;
+const planPrices = commercialPlans.map((plan) => plan.price);
+const priceRange = `R$ ${Math.min(...planPrices)} – R$ ${Math.max(...planPrices)}`;
 
 function organization() {
   return {
@@ -87,13 +88,6 @@ function offerCatalog() {
         },
         priceSpecification: [
           { "@type": "UnitPriceSpecification", price: plan.price, priceCurrency: "BRL" },
-          {
-            "@type": "UnitPriceSpecification",
-            price: plan.monthly,
-            priceCurrency: "BRL",
-            name: "Manutenção mensal",
-            unitCode: "MON",
-          },
         ],
       })),
       {
@@ -220,7 +214,7 @@ export function serviceSchema(service: Service) {
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url,
-      description: `Plano ${plan.name}: ${plan.purpose}. Manutenção de R$ ${plan.monthly}/mês.`,
+      description: `Plano ${plan.name}: ${plan.purpose}.`,
     },
   };
 }
@@ -260,7 +254,7 @@ export function nicheSchema(niche: Niche) {
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url,
-      description: `Plano ${plan.name}: ${plan.purpose}. Manutenção de R$ ${plan.monthly}/mês.`,
+      description: `Plano ${plan.name}: ${plan.purpose}.`,
     },
   };
 }

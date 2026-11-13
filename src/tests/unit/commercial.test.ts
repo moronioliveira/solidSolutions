@@ -1,16 +1,40 @@
 import { describe, expect, it } from "vitest";
-import { adBudget, adManagement, commercialPlans, whatsappUrl } from "@/lib/pricing/commercial";
+import {
+  adBudget,
+  adManagement,
+  commercialPlans,
+  getPlan,
+  maintenance,
+  whatsappUrl,
+} from "@/lib/pricing/commercial";
 
 describe("Commercial terms", () => {
-  it("prices Essencial at R$250 once instead of R$450, plus R$50 monthly", () => {
-    expect(commercialPlans[0]).toMatchObject({ name: "Essencial", originalPrice: 450, price: 250, monthly: 50 });
+  it("prices Essencial at R$250 once", () => {
+    expect(getPlan("Essencial").price).toBe(250);
   });
-  it("prices Performance at R$550 once instead of R$750, plus R$50 monthly", () => {
-    expect(commercialPlans[1]).toMatchObject({ name: "Performance", originalPrice: 750, price: 550, monthly: 50 });
+  it("prices Performance at R$550 once", () => {
+    expect(getPlan("Performance").price).toBe(550);
   });
-  it("prices optional management at R$150 instead of R$250, additional to maintenance", () => {
-    expect(adManagement).toEqual({ originalMonthly: 250, monthly: 150 });
-    expect(adManagement.monthly + commercialPlans[1].monthly).toBe(200);
+  it("keeps monthly fees as optional add-ons outside the plans", () => {
+    expect(maintenance.monthly).toBe(50);
+    expect(maintenance.singleChange).toBe(30);
+    for (const plan of commercialPlans) expect(plan).not.toHaveProperty("monthly");
+  });
+  it("prices the Google Ads-only plan at R$300 once, requiring an existing site", () => {
+    expect(getPlan("Google Ads").price).toBe(300);
+    expect(getPlan("Google Ads").requirement).toBeTruthy();
+  });
+  it("keeps Performance equal to Essencial plus the Google Ads plan", () => {
+    expect(getPlan("Performance").price).toBe(
+      getPlan("Essencial").price + getPlan("Google Ads").price,
+    );
+  });
+  it("shows market ranges above our prices", () => {
+    for (const plan of commercialPlans) expect(plan.market.min).toBeGreaterThan(plan.price);
+    expect(adManagement.market.min).toBeGreaterThan(adManagement.monthly);
+  });
+  it("prices optional management at R$250 per month", () => {
+    expect(adManagement.monthly).toBe(250);
   });
   it("recommends a separate R$10–20 daily advertising budget", () => {
     expect(adBudget).toEqual({ minimumDaily: 10, maximumDaily: 20 });

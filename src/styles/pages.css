@@ -72,8 +72,8 @@
 }
 .plans-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 .plan-card {
   display: flex;
@@ -147,8 +147,29 @@
 .plan-price b {
   color: var(--primary);
 }
-.plan-old-price s {
-  opacity: 0.8;
+/* Textos secundários um pouco mais claros nos planos: o cinza padrão em fonte pequena
+   sobre o fundo escuro parecia desfocado. */
+.plans-section {
+  --muted-foreground: oklch(0.76 0.003 80);
+}
+.plan-market {
+  font-size: 14px;
+}
+.plan-market b,
+.management-price .plan-market b {
+  color: var(--muted-foreground);
+  font-weight: 600;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--muted-foreground);
+}
+.plan-our-price {
+  margin-top: 8px;
+  font-family: var(--font-code);
+  font-size: 12px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary) !important;
 }
 .plan-features {
   display: grid;
@@ -261,6 +282,13 @@
   font-size: 15px;
   line-height: 1.7;
   color: var(--muted-foreground);
+}
+.maintenance-single {
+  margin-top: 10px;
+}
+.maintenance-single b {
+  color: var(--foreground);
+  font-weight: 600;
 }
 .plans-help {
   display: flex;
@@ -615,5 +643,59 @@
 .service-ideal > p {
   font-size: 15px;
   line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+/* Planos: garantias e fontes das faixas de mercado */
+.plan-guarantees {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+.plan-guarantees li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.plan-guarantees svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--primary);
+}
+.plan-guarantees b {
+  color: var(--foreground);
+}
+.plans-sources {
+  margin-top: 28px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+.plans-sources a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+@media (min-width: 1001px) and (max-width: 1100px) {
+  .plans-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 860px) {
+  .plan-guarantees {
+    grid-template-columns: 1fr;
+  }
+}
+.plan-price .plan-price-note {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
   color: var(--muted-foreground);
 }
