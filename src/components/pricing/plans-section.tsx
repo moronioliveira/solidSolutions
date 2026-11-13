@@ -58,16 +58,18 @@ export function PlansSection({ eyebrow = "05 / Planos e preços" }: { eyebrow?: 
                 key={plan.name}
                 data-reveal
               >
-                <div className="plan-kicker">
-                  <span>{plan.purpose}</span>
-                  {featured && (
-                    <span className="plan-badge">
-                      <ChartNoAxesCombined size={14} aria-hidden="true" /> Mais completo
-                    </span>
-                  )}
-                </div>
-                <h3>Plano {plan.name}</h3>
-                <p className="plan-audience">{plan.audience}</p>
+                <header className="plan-head">
+                  <div className="plan-kicker">
+                    <span>{plan.purpose}</span>
+                    {featured && (
+                      <span className="plan-badge">
+                        <ChartNoAxesCombined size={14} aria-hidden="true" /> Mais completo
+                      </span>
+                    )}
+                  </div>
+                  <h3>Plano {plan.name}</h3>
+                  <p className="plan-audience">{plan.audience}</p>
+                </header>
                 <div className="plan-price">
                   <MarketRange min={plan.market.min} />
                   <span className="plan-our-price">Nosso preço</span>
@@ -91,17 +93,20 @@ export function PlansSection({ eyebrow = "05 / Planos e preços" }: { eyebrow?: 
                     </li>
                   ))}
                 </ul>
-                <div className="plan-choice">
-                  <span className="eyebrow">Por que escolher</span>
-                  <p>{plan.reason}</p>
+                <div className="plan-extra">
+                  <div className="plan-choice">
+                    <span className="eyebrow">Por que escolher</span>
+                    <p>{plan.reason}</p>
+                  </div>
+                  {plan.requirement && <p className="plan-budget">{plan.requirement}</p>}
+                  {hasAds && (
+                    <p className="plan-budget">
+                      A verba de anúncios é separada e paga diretamente ao Google. Sugestão inicial:{" "}
+                      {formatBRL(adBudget.minimumDaily)} a {formatBRL(adBudget.maximumDaily)} por
+                      dia.
+                    </p>
+                  )}
                 </div>
-                {plan.requirement && <p className="plan-budget">{plan.requirement}</p>}
-                {hasAds && (
-                  <p className="plan-budget">
-                    A verba de anúncios é separada e paga diretamente ao Google. Sugestão inicial:{" "}
-                    {formatBRL(adBudget.minimumDaily)} a {formatBRL(adBudget.maximumDaily)} por dia.
-                  </p>
-                )}
                 <WhatsAppLink
                   location={`plano-${plan.name.toLowerCase().replace(/\s+/g, "-")}`}
                   message={`Olá! Conheci a Solid Solutions pelo site e tenho interesse no plano ${plan.name}. Gostaria de conversar sobre meu projeto.`}

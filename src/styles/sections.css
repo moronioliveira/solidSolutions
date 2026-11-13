@@ -97,8 +97,20 @@
   font-weight: 600;
   color: var(--foreground);
 }
+/* Empurra o "Você recebe" para a base do cartão, alinhado entre as etapas,
+   com 20px de distância do texto acima. */
 .process-card > .process-deliverable:not(:first-child) {
-  margin-top: 20px;
+  margin-top: auto;
+}
+.process-card > :has(+ .process-deliverable) {
+  margin-bottom: 20px;
+}
+@media (min-width: 761px) {
+  /* Reserva duas linhas para a entrega: a linha tracejada fica na mesma altura nas etapas. */
+  .process-card > p.process-deliverable {
+    min-height: 93px;
+    align-content: start;
+  }
 }
 .process-deliverable span {
   font-family: var(--font-code);

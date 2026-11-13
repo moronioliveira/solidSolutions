@@ -362,7 +362,7 @@ a {
   gap: 10px 26px;
   margin-top: 34px;
   font-size: 14px;
-  color: var(--muted-foreground);
+  color: color-mix(in oklab, var(--foreground) 78%, transparent);
 }
 .hero-proof li {
   display: flex;
@@ -808,7 +808,7 @@ a {
 }
 .footer-contact address {
   display: grid;
-  gap: 12px;
+  gap: 2px;
   font-style: normal;
   font-size: 15px;
   color: var(--muted-foreground);
@@ -817,6 +817,13 @@ a {
   display: flex;
   gap: 10px;
   align-items: flex-start;
+}
+.footer-contact address > a {
+  align-items: center;
+  min-height: 44px;
+}
+.footer-contact address > a svg {
+  margin-top: 0;
 }
 .footer-contact address svg {
   margin-top: 4px;
