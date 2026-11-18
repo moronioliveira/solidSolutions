@@ -1,3 +1,4 @@
+import type { PlanName } from "@/lib/pricing/commercial";
 import type { FaqItem } from "./faq";
 
 /**
@@ -26,7 +27,7 @@ export interface Niche {
   projectSlug: string;
   /** Serviço relacionado em src/content/services.ts */
   serviceSlug: string;
-  planName: "Essencial" | "Performance";
+  planName: PlanName;
   whatsappMessage: string;
   faq: FaqItem[];
 }
@@ -243,7 +244,7 @@ export const niches: Niche[] = [
     headline: "Site institucional para construtoras e empresas de construção",
     seoTitle: "Site Institucional para Construtoras",
     seoDescription:
-      "Site institucional para construtora com obras, empreendimentos, serviços e contato pelo WhatsApp, feito para transmitir solidez. Planos a partir de R$ 250.",
+      "Site institucional para construtora com obras, empreendimentos, serviços e contato pelo WhatsApp, feito para transmitir solidez. Pacotes a partir de R$ 990.",
     summary:
       "Um site que mostra suas obras e empreendimentos com destaque, apresenta a empresa com seriedade e ajuda a fechar contratos de alto valor.",
     intro: [
@@ -278,7 +279,7 @@ export const niches: Niche[] = [
     },
     projectSlug: "construtora-alvorada",
     serviceSlug: "criacao-de-site-institucional",
-    planName: "Essencial",
+    planName: "Institucional Start",
     whatsappMessage:
       "Olá! Vi a página de site para construtoras da Solid Solutions e quero um orçamento.",
     faq: [

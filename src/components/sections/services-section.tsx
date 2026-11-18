@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, ChartNoAxesCombined, Check, Globe, MousePointer2 } from "lucide-react";
+import { ArrowUpRight, ChartNoAxesCombined, Check, Globe, MapPin, MousePointer2 } from "lucide-react";
 import { services, type ServiceIcon } from "@/content/services";
 import { SectionHeading } from "./section-heading";
 
@@ -7,6 +7,7 @@ export const serviceIcons: Record<ServiceIcon, typeof Globe> = {
   globe: Globe,
   pointer: MousePointer2,
   chart: ChartNoAxesCombined,
+  pin: MapPin,
 };
 
 export function ServicesSection({ eyebrow = "01 / O que fazemos" }: { eyebrow?: string }) {

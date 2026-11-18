@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check, ShieldCheck } from "lucide-react";
 import heroImage from "@/assets/hero/solid-hero.jpg";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { hero } from "@/content/home";
+import { site } from "@/content/site";
 
 export function Hero() {
   const lastLine = hero.title.length - 1;
@@ -31,12 +32,15 @@ export function Hero() {
         <p className="hero-description">{hero.description}</p>
         <div className="hero-actions">
           <WhatsAppLink location="hero" className="btn btn-primary btn-lg">
-            Pedir orçamento no WhatsApp <ArrowUpRight aria-hidden="true" />
+            {site.ctaLabel} <ArrowUpRight aria-hidden="true" />
           </WhatsAppLink>
           <Link href="/projetos" className="text-cta">
             Ver projetos <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         </div>
+        <p className="hero-assurance">
+          <ShieldCheck size={16} aria-hidden="true" /> {hero.assurance}
+        </p>
         <ul className="hero-proof" aria-label="Destaques">
           {hero.proof.map((item) => (
             <li key={item}>

@@ -4,7 +4,15 @@ import type { Project } from "@/content/projects";
 import { seo } from "@/content/seo";
 import type { Service } from "@/content/services";
 import { absoluteUrl, site, socialLinks } from "@/content/site";
-import { adManagement, commercialPlans, getPlan } from "@/lib/pricing/commercial";
+import {
+  adManagement,
+  allOffers,
+  businessProfile,
+  commercialPlans,
+  getPlan,
+  institutionalPlans,
+  reportSubscription,
+} from "@/lib/pricing/commercial";
 
 /**
  * Dados estruturados (schema.org) do site.
@@ -23,8 +31,8 @@ export interface Crumb {
   path: string;
 }
 
-const planPrices = commercialPlans.map((plan) => plan.price);
-const priceRange = `R$ ${Math.min(...planPrices)} – R$ ${Math.max(...planPrices)}`;
+const offerPrices = allOffers.map((offer) => offer.price);
+const priceRange = `R$ ${Math.min(...offerPrices)} – R$ ${Math.max(...offerPrices).toLocaleString("pt-BR")}`;
 
 function organization() {
   return {
@@ -73,7 +81,7 @@ function offerCatalog() {
     "@id": schemaIds.catalog,
     name: "Planos Solid Solutions",
     itemListElement: [
-      ...commercialPlans.map((plan) => ({
+      ...[...commercialPlans, ...institutionalPlans].map((plan) => ({
         "@type": "Offer",
         name: `Plano ${plan.name}`,
         description: plan.audience,
@@ -90,6 +98,33 @@ function offerCatalog() {
           { "@type": "UnitPriceSpecification", price: plan.price, priceCurrency: "BRL" },
         ],
       })),
+      {
+        "@type": "Offer",
+        name: "Configuração do Google Meu Negócio",
+        description: businessProfile.audience,
+        price: businessProfile.price,
+        priceCurrency: "BRL",
+        availability: "https://schema.org/InStock",
+        url: absoluteUrl("/servicos/google-meu-negocio"),
+        itemOffered: {
+          "@type": "Service",
+          name: `${businessProfile.name}: ${businessProfile.purpose}`,
+          provider: { "@id": schemaIds.organization },
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Relatório mensal de resultados dos anúncios (Painel Solid)",
+        description: `Relatório de leitura em linguagem simples, sem gestão de campanhas. Instalação única de ${reportSubscription.installation} reais.`,
+        price: reportSubscription.monthly,
+        priceCurrency: "BRL",
+        url: absoluteUrl("/servicos/google-ads"),
+        itemOffered: {
+          "@type": "Service",
+          name: "Relatório mensal de resultados do Google Ads",
+          provider: { "@id": schemaIds.organization },
+        },
+      },
       {
         "@type": "Offer",
         name: "Gestão mensal de Google Ads",
@@ -214,7 +249,10 @@ export function serviceSchema(service: Service) {
       priceCurrency: "BRL",
       availability: "https://schema.org/InStock",
       url,
-      description: `Plano ${plan.name}: ${plan.purpose}.`,
+      description:
+        service.pricingBlock === "institutional"
+          ? `A partir de ${plan.price} reais (até 5 páginas). Pacote Completo (até 10 páginas): ${institutionalPlans[1].price} reais.`
+          : `Plano ${plan.name}: ${plan.purpose}.`,
     },
   };
 }

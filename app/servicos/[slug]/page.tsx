@@ -3,11 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check } from "lucide-react";
 import { PageIntro } from "@/components/layout";
+import { InstitutionalPackages } from "@/components/pricing";
 import {
   ContactBand,
   FaqSection,
   ProcessSection,
   ProjectCard,
+  ReportSection,
   SectionHeading,
   serviceIcons,
 } from "@/components/sections";
@@ -16,6 +18,7 @@ import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { niches } from "@/content/niches";
 import { projects } from "@/content/projects";
 import { getService, services } from "@/content/services";
+import { site } from "@/content/site";
 import { formatBRL, getPlan } from "@/lib/pricing/commercial";
 import { pageGraph, pageMetadata, serviceSchema, type Crumb } from "@/lib/seo";
 
@@ -79,7 +82,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             message={service.whatsappMessage}
             className="btn btn-primary btn-lg"
           >
-            Pedir orçamento no WhatsApp <ArrowUpRight aria-hidden="true" />
+            {site.ctaLabel} <ArrowUpRight aria-hidden="true" />
           </WhatsAppLink>
           <span className="intro-price">
             A partir de <strong>{formatBRL(plan.price)}</strong> (pagamento único)
@@ -111,7 +114,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
             id="service-deliverables"
             eyebrow="O que está incluído"
             title="Tudo o que você recebe"
-            description={`Incluído no plano ${plan.name}: ${formatBRL(plan.price)} de pagamento único. Manutenção mensal é opcional e cobrada à parte.`}
+            description={
+              service.pricingNote ??
+              `Incluído no plano ${plan.name}: ${formatBRL(plan.price)} de pagamento único. Manutenção mensal é opcional e cobrada à parte.`
+            }
           />
           <ul className="deliverables-list">
             {service.deliverables.map((item) => (
@@ -128,11 +134,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </article>
             ))}
           </div>
+          {service.pricingBlock === "institutional" && (
+            <InstitutionalPackages location={`servico-${service.slug}`} />
+          )}
           <Link href="/servicos#planos" className="text-cta">
             Comparar planos e preços <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         </div>
       </section>
+
+      {service.showReport && <ReportSection location={service.slug} eyebrow="Como você acompanha" />}
 
       {related.length > 0 && (
         <section className="section site-container" aria-labelledby="service-projects">

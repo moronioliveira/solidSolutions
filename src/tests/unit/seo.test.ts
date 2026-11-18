@@ -69,9 +69,9 @@ describe("Structured data", () => {
     ]);
   });
 
-  it("prices each service with its plan", () => {
+  it("prices the Google Ads service with the Google Ads-only plan", () => {
     const schema = serviceSchema(services.find((item) => item.slug === "google-ads")!);
-    expect(schema.offers).toMatchObject({ price: 550, priceCurrency: "BRL" });
+    expect(schema.offers).toMatchObject({ price: 300, priceCurrency: "BRL" });
   });
 });
 

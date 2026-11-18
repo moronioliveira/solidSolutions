@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
-import { navigation } from "@/content/site";
+import { navigation, site } from "@/content/site";
 import { BrandMark } from "./brand-mark";
 
 function isActive(pathname: string, href: string) {
@@ -45,7 +45,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <WhatsAppLink location="header" className="btn btn-outline header-cta">
-          Pedir orçamento <ArrowUpRight aria-hidden="true" />
+          Falar no WhatsApp <ArrowUpRight aria-hidden="true" />
         </WhatsAppLink>
         <button
           type="button"
@@ -71,7 +71,7 @@ export function SiteHeader() {
           </Link>
         ))}
         <WhatsAppLink location="menu-mobile" className="btn btn-primary">
-          Pedir orçamento no WhatsApp
+          {site.ctaLabel}
         </WhatsAppLink>
       </nav>
     </header>

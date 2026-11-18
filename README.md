@@ -13,12 +13,14 @@ npm install
 npm run dev
 ```
 
-| Comando         | O que faz                         |
-| --------------- | --------------------------------- |
-| `npm run build` | Gera a versão de produção         |
-| `npm run start` | Roda a versão de produção         |
-| `npm run lint`  | Verifica o código com ESLint      |
-| `npm test`      | Testes (preços, SEO, sitemap etc) |
+| Comando             | O que faz                                                       |
+| ------------------- | --------------------------------------------------------------- |
+| `npm run build`     | Gera a versão de produção                                       |
+| `npm run start`     | Roda a versão de produção                                       |
+| `npm run lint`      | Verifica o código com ESLint                                    |
+| `npm run typecheck` | Confere os tipos do TypeScript                                  |
+| `npm test`          | Testes (preços, SEO, páginas, conversão, configuração)          |
+| `npm run smoke`     | Testa o site publicado: `npm run smoke -- https://seu-endereco` |
 
 ## Variáveis de ambiente
 
@@ -79,5 +81,31 @@ Todo botão do WhatsApp usa `WhatsAppLink` e, ao ser clicado, envia ao `dataLaye
 { event: "whatsapp_click", cta_location: "hero" | "header" | "plano-essencial" | ..., page_path: "/" }
 ```
 
-Abrir uma pergunta do FAQ envia `faq_open` com `faq_question`. No GTM, crie um acionador de
-evento personalizado `whatsapp_click` e use-o na tag de conversão do Google Ads/GA4.
+Abrir uma pergunta do FAQ envia `faq_open` com `faq_question`. O botão "Ver o relatório de exemplo"
+(demonstração do Painel Solid) envia `demo_click`. No GTM, crie um acionador de evento
+personalizado `whatsapp_click` e use-o na tag de conversão do Google Ads/GA4.
+
+### Como a página inicial convence (e por que não vira uma parede de preços)
+
+- Ordem: promessa, o que fazemos, prova de resultado (relatório do Painel Solid), prova de
+  trabalho (projetos), comparação, preço, como funciona, dúvidas e chamada final.
+- A home mostra só **3 cartões de plano** e um link para `/servicos#planos`, onde ficam todos os
+  planos, pacotes do institucional e adicionais. Detalhe demais na home afasta quem ainda não decidiu.
+- A garantia de entrega fica ao lado do botão principal.
+- Regra testada: nunca mais de duas seções seguidas sem um botão de WhatsApp.
+- A regra do sinal (verba de início, retida na desistência) fica só na proposta e no contrato,
+  em `~/projetos/solid-solutions-modelos`. Mudou preço ou condição aqui? Atualize lá também.
+
+## Testes e proteção contra quebra em produção
+
+- `npm test` roda tudo, incluindo a renderização de **todas** as páginas (um `h1`, links internos,
+  âncoras, JSON-LD válido, botões de WhatsApp), os preços escritos nos textos contra
+  `src/lib/pricing/commercial.ts`, a regra de conversão da home e a configuração do Next
+  (redirecionamentos antigos apontam para páginas que existem).
+- `.github/workflows/ci.yml`: a cada push e pull request roda tipos, lint, testes e build.
+  Se falhar, o commit fica com um X vermelho. Não junte na `main` enquanto estiver vermelho.
+- `.github/workflows/smoke.yml`: depois de cada publicação em produção, roda `scripts/smoke.mjs`
+  no site publicado (todas as páginas do sitemap, SEO, 404, redirecionamentos, a demonstração do
+  Painel Solid). Também roda à mão em Actions > Teste do site publicado.
+- O Vitest transforma o JSX por conta própria (`oxc` em `vitest.config.ts`), porque o Next exige
+  `"jsx": "preserve"` no tsconfig. Sem isso, os testes de componentes nem executam.

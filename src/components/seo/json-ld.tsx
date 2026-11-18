@@ -8,7 +8,7 @@ export function JsonLd({ data }: JsonLdProps) {
     <script
       type="application/ld+json"
       // O replace evita que um "<" no texto feche a tag script.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\u003c") }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
     />
   );
 }
