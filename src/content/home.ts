@@ -6,7 +6,9 @@ export const hero = {
   title: ["Criação de sites e", "landing pages que", "geram clientes."],
   description:
     "Unimos design, tecnologia e SEO para criar páginas rápidas, encontráveis no Google e feitas para levar o visitante direto ao seu WhatsApp.",
-  proof: ["Pronto em poucos dias", "Pagamento único", "A partir de R$ 250"],
+  /** Frase de redução de risco, logo abaixo do botão principal. Deve bater com o contrato (garantia de entrega). */
+  assurance: "Proposta sem compromisso. Se não entregarmos no prazo combinado, devolvemos o que você pagou.",
+  proof: ["Pronto em poucos dias", "Hospedagem inclusa", "A partir de R$ 250"],
 } as const;
 
 export const capabilities = [
@@ -103,6 +105,11 @@ export const comparison = {
       values: ["yes", "no", "partial"],
     },
     {
+      label: "Relatório mensal de resultados em linguagem simples",
+      values: ["yes", "no", "partial"],
+      note: "Na gestão de anúncios; o plano Performance já inclui o primeiro.",
+    },
+    {
       label: "Código leve, rápido no celular",
       values: ["yes", "partial", "yes"],
       note: "Construtores carregam scripts da plataforma em todas as páginas.",
@@ -112,7 +119,7 @@ export const comparison = {
       values: ["yes", "no", "yes"],
     },
     {
-      label: "Manutenção opcional com hospedagem e suporte por R$ 50/mês",
+      label: "Hospedagem inclusa e manutenção opcional por R$ 50/mês",
       values: ["yes", "partial", "partial"],
     },
     {

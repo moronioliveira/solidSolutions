@@ -1,0 +1,27 @@
+# Depois que a Vercel termina uma publicação em produção, testa o site publicado.
+# Se alguma página pública quebrar, o commit fica com um X vermelho e o GitHub avisa por e-mail.
+# Também dá para rodar à mão em Actions > Teste do site publicado.
+name: Teste do site publicado
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Endereço a testar
+        default: https://solidsolutionsdigital.com.br
+
+jobs:
+  testar:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Testar
+        run: node scripts/smoke.mjs "${{ github.event.deployment_status.environment_url || inputs.url }}"

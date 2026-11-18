@@ -15,6 +15,7 @@ import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { getNiche, niches } from "@/content/niches";
 import { getProject } from "@/content/projects";
 import { getService } from "@/content/services";
+import { site } from "@/content/site";
 import { formatBRL, getPlan } from "@/lib/pricing/commercial";
 import { nicheSchema, pageGraph, pageMetadata, type Crumb } from "@/lib/seo";
 
@@ -77,7 +78,7 @@ export default async function NichePage({ params }: NichePageProps) {
             message={niche.whatsappMessage}
             className="btn btn-primary btn-lg"
           >
-            Pedir orçamento no WhatsApp <ArrowUpRight aria-hidden="true" />
+            {site.ctaLabel} <ArrowUpRight aria-hidden="true" />
           </WhatsAppLink>
           <span className="intro-price">
             A partir de <strong>{formatBRL(plan.price)}</strong> (pagamento único)

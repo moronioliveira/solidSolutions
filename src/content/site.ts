@@ -25,7 +25,10 @@ export const site = {
   ogImage: "/og-image.jpg",
   logo: "/brand/solid-solutions-logo.jpg",
   symbol: "/brand/solid-solutions-symbol.jpg",
-  ctaLabel: "Pedir orçamento no WhatsApp",
+  /** Texto padrão dos botões principais: diz o que o visitante recebe, não o que ele precisa fazer. */
+  ctaLabel: "Receber proposta no WhatsApp",
+  /** Relatório de exemplo (dados fictícios) do Painel Solid. */
+  reportDemoUrl: "https://painel.solidsolutionsdigital.com.br/demo",
 } as const;
 
 /**

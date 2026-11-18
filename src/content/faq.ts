@@ -32,7 +32,12 @@ export const faq: FaqItem[] = [
   {
     question: "Preciso ter domínio e hospedagem?",
     answer:
-      "Não precisa se preocupar. Publicamos a página com HTTPS em uma hospedagem no seu nome, que na maioria dos casos é gratuita. Se quiser que a gente cuide da hospedagem, do monitoramento e das alterações, a manutenção mensal opcional custa R$ 50. O domínio (seunegocio.com.br) custa cerca de R$ 40 por ano no Registro.br, e orientamos o registro.",
+      "A hospedagem já está inclusa nos planos com site: publicamos com HTTPS e sem mensalidade de hospedagem, enquanto o projeto estiver dentro dos limites do plano gratuito da plataforma. Ela não depende da manutenção opcional de R$ 50, que cobre monitoramento, suporte e as alterações do mês. O domínio (seunegocio.com.br) custa cerca de R$ 40 por ano no Registro.br, e orientamos o registro.",
+  },
+  {
+    question: "Como vou saber se os anúncios estão dando resultado?",
+    answer:
+      "Com a gestão de anúncios você recebe todo mês um relatório em linguagem simples, com os contatos que chegaram, quanto custou cada um e quanto voltou do que você investiu. No plano Performance, o primeiro relatório já está incluso. Quem anuncia por conta própria pode receber só o relatório, por R$ 79 por mês, mais R$ 120 de instalação, sem fidelidade. Há um exemplo com dados fictícios no site.",
   },
   {
     question: "Posso pedir alterações depois que o site estiver no ar?",

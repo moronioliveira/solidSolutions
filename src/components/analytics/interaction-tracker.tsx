@@ -22,13 +22,23 @@ function getCampaign(): string {
 /**
  * Envia para o dataLayer:
  * - `whatsapp_click` em todo link marcado com data-cta="whatsapp";
+ * - `demo_click` em todo link marcado com data-cta="demo" (relatório de exemplo do Painel Solid);
  * - `faq_open` quando uma pergunta frequente é aberta.
  * Um único ouvinte no documento evita transformar os botões em componentes de cliente.
  */
 export function InteractionTracker() {
   useEffect(() => {
     function onClick(event: MouseEvent) {
-      const link = (event.target as Element | null)?.closest<HTMLElement>('[data-cta="whatsapp"]');
+      const target = event.target as Element | null;
+      const demo = target?.closest<HTMLElement>('[data-cta="demo"]');
+      if (demo) {
+        trackEvent("demo_click", {
+          cta_location: demo.dataset.ctaLocation ?? "desconhecido",
+          page_path: window.location.pathname,
+        });
+        return;
+      }
+      const link = target?.closest<HTMLElement>('[data-cta="whatsapp"]');
       if (!link) return;
       trackEvent("whatsapp_click", {
         cta_location: link.dataset.ctaLocation ?? "desconhecido",

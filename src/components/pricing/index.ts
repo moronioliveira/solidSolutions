@@ -1,1 +1,1 @@
-export { PlansSection } from "./plans-section";
+export { InstitutionalPackages, PlansSection } from "./plans-section";

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/layout";
+import { JsonLd } from "@/components/seo/json-ld";
 import { seo } from "@/content/seo";
 import { site } from "@/content/site";
-import { pageMetadata, type Crumb } from "@/lib/seo";
+import { pageGraph, pageMetadata, type Crumb } from "@/lib/seo";
 
 const page = seo.pages.privacy;
 const path = "/politica-de-privacidade";
@@ -16,6 +17,7 @@ export const metadata: Metadata = pageMetadata({ ...page, path });
 export default function PrivacyPage() {
   return (
     <>
+      <JsonLd data={pageGraph({ path, title: page.title, description: page.description, crumbs })} />
       <PageIntro
         crumbs={crumbs}
         label="Privacidade / LGPD"
