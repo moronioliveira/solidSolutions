@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Check, Clock, Globe, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Check, Clock, Globe, Mail, MessageCircle } from "lucide-react";
 import { PageIntro } from "@/components/layout";
 import { FaqSection } from "@/components/sections";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -84,6 +84,16 @@ export default function ContactPage() {
                 <WhatsAppLink location="contato-numero">{site.whatsapp.display}</WhatsAppLink>
               </dd>
             </div>
+            {site.email && (
+              <div>
+                <dt>
+                  <Mail aria-hidden="true" /> E-mail
+                </dt>
+                <dd>
+                  <a href={`mailto:${site.email}`}>{site.email}</a>
+                </dd>
+              </div>
+            )}
             <div>
               <dt>
                 <Globe aria-hidden="true" /> Atendimento

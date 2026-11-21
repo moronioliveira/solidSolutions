@@ -69,6 +69,7 @@ function organization() {
       url: `https://wa.me/${site.whatsapp.number}`,
       availableLanguage: "pt-BR",
       areaServed: "BR",
+      ...(site.email ? { email: site.email } : {}),
     },
     hasOfferCatalog: { "@id": schemaIds.catalog },
     ...(socialLinks.length ? { sameAs: socialLinks.map((link) => link.url) } : {}),

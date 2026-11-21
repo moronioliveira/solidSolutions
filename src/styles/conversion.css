@@ -21,6 +21,13 @@
   color: var(--primary);
 }
 
+/* ---------- Contato: e-mail longo não pode estourar a coluna ---------- */
+
+.footer-contact address a,
+.contact-facts dd a {
+  overflow-wrap: anywhere;
+}
+
 /* ---------- Serviços: 4 cartões em 2 x 2 ---------- */
 
 @media (min-width: 761px) {

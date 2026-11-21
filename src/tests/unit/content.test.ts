@@ -20,7 +20,7 @@ import {
   reportSubscription,
 } from "@/lib/pricing/commercial";
 import { buildLlmsTxt } from "@/lib/seo/llms";
-import { serviceSchema } from "@/lib/seo";
+import { pageGraph, serviceSchema } from "@/lib/seo";
 
 /** Junta todo o texto de um objeto (strings em qualquer profundidade). */
 function allText(value: unknown): string[] {
@@ -133,6 +133,18 @@ describe("Dados da marca", () => {
     expect(site.whatsapp.number).toMatch(/^55\d{10,11}$/);
     const digits = site.whatsapp.display.replace(/\D/g, "");
     expect(site.whatsapp.number.endsWith(digits)).toBe(true);
+  });
+
+  it("tem o e-mail oficial válido, no llms.txt e nos dados estruturados", () => {
+    expect(site.email).toBe("solidsolutionsdigital@gmail.com");
+    expect(site.email).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+    expect(buildLlmsTxt()).toContain(site.email);
+    const graph = pageGraph({ path: "/", title: "t", description: "d" });
+    const organization = (graph["@graph"] as Record<string, unknown>[]).find(
+      (node) => node["@id"] === `${site.url}/#organizacao`,
+    )!;
+    expect(organization.email).toBe(site.email);
+    expect(JSON.stringify(organization.contactPoint)).toContain(site.email);
   });
 
   it("aponta para o domínio oficial com HTTPS", () => {

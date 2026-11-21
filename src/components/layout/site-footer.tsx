@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Globe, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Globe, Mail, MessageCircle } from "lucide-react";
 import logo from "@/assets/brand/solid-solutions-logo.png";
 import { WhatsAppLink } from "@/components/ui/whatsapp-link";
 import { niches } from "@/content/niches";
@@ -63,6 +63,11 @@ export function SiteFooter() {
             <WhatsAppLink location="footer">
               <MessageCircle size={16} aria-hidden="true" /> {site.whatsapp.display}
             </WhatsAppLink>
+            {site.email && (
+              <a href={`mailto:${site.email}`}>
+                <Mail size={16} aria-hidden="true" /> {site.email}
+              </a>
+            )}
             <span>
               <Globe size={16} aria-hidden="true" /> Atendimento online em todo o Brasil
             </span>
