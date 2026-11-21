@@ -1,0 +1,84 @@
+diff --git a/src/components/analytics/interaction-tracker.tsx b/src/components/analytics/interaction-tracker.tsx
+index a4addc6..b6ca539 100644
+--- a/src/components/analytics/interaction-tracker.tsx
++++ b/src/components/analytics/interaction-tracker.tsx
+@@ -2,6 +2,7 @@
+ 
+ import { useEffect } from "react";
+ import { trackEvent } from "@/lib/tracking";
++import { withCampaignRef } from "@/lib/whatsapp-ref";
+ 
+ const CAMPAIGN_KEY = "utm_campaign";
+ 
+@@ -40,9 +41,12 @@ export function InteractionTracker() {
+       }
+       const link = target?.closest<HTMLElement>('[data-cta="whatsapp"]');
+       if (!link) return;
++      const campaign = getCampaign();
++      // O clique ainda não navegou: dá tempo de marcar a mensagem com a campanha (ex.: "(ref. C1)").
++      if (link instanceof HTMLAnchorElement) link.href = withCampaignRef(link.href, campaign);
+       trackEvent("whatsapp_click", {
+         cta_location: link.dataset.ctaLocation ?? "desconhecido",
+-        campaign: getCampaign(),
++        campaign,
+         page_path: window.location.pathname,
+       });
+     }
+diff --git a/src/lib/whatsapp-ref.ts b/src/lib/whatsapp-ref.ts
+new file mode 100644
+index 0000000..3c90951
+--- /dev/null
++++ b/src/lib/whatsapp-ref.ts
+@@ -0,0 +1,18 @@
++/** Nome de campanha aceito na referência: letras, números, hífen e sublinhado (evita injetar texto estranho na mensagem). */
++const SAFE_CAMPAIGN = /^[A-Za-z0-9_-]{1,30}$/;
++
++/**
++ * Acrescenta "(ref. C1)" ao fim da mensagem de um link wa.me quando a visita veio de uma campanha paga
++ * (utm_campaign = c1). Assim o contato no WhatsApp pode ser ligado à campanha. Visitas orgânicas e
++ * links que já têm referência ficam intactos.
++ */
++export function withCampaignRef(href: string, campaign: string): string {
++  if (!campaign || campaign === "organico" || !SAFE_CAMPAIGN.test(campaign)) return href;
++  if (!href.includes("wa.me/") || !href.includes("text=")) return href;
++  try {
++    if (decodeURIComponent(href).includes("(ref. ")) return href;
++  } catch {
++    return href;
++  }
++  return `${href}${encodeURIComponent(` (ref. ${campaign.toUpperCase()})`)}`;
++}
+diff --git a/src/tests/unit/whatsapp-ref.test.ts b/src/tests/unit/whatsapp-ref.test.ts
+new file mode 100644
+index 0000000..a7476a7
+--- /dev/null
++++ b/src/tests/unit/whatsapp-ref.test.ts
+@@ -0,0 +1,28 @@
++import { describe, expect, it } from "vitest";
++import { whatsappUrl } from "@/lib/pricing/commercial";
++import { withCampaignRef } from "@/lib/whatsapp-ref";
++
++describe("withCampaignRef", () => {
++  const href = whatsappUrl("Olá! Quero um site.");
++
++  it("appends the campaign reference to the message", () => {
++    const result = withCampaignRef(href, "c1");
++    const text = new URL(result).searchParams.get("text");
++    expect(text).toBe("Olá! Quero um site. (ref. C1)");
++  });
++
++  it("keeps organic visits untouched", () => {
++    expect(withCampaignRef(href, "organico")).toBe(href);
++    expect(withCampaignRef(href, "")).toBe(href);
++  });
++
++  it("does not add the reference twice", () => {
++    const once = withCampaignRef(href, "c1");
++    expect(withCampaignRef(once, "c1")).toBe(once);
++  });
++
++  it("ignores unsafe campaign names and non-WhatsApp links", () => {
++    expect(withCampaignRef(href, "c1) <script>")).toBe(href);
++    expect(withCampaignRef("https://example.com/?text=oi", "c1")).toBe("https://example.com/?text=oi");
++  });
++});

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/tracking";
+import { withCampaignRef } from "@/lib/whatsapp-ref";
 
 const CAMPAIGN_KEY = "utm_campaign";
 
@@ -40,9 +41,12 @@ export function InteractionTracker() {
       }
       const link = target?.closest<HTMLElement>('[data-cta="whatsapp"]');
       if (!link) return;
+      const campaign = getCampaign();
+      // O clique ainda não navegou: dá tempo de marcar a mensagem com a campanha (ex.: "(ref. C1)").
+      if (link instanceof HTMLAnchorElement) link.href = withCampaignRef(link.href, campaign);
       trackEvent("whatsapp_click", {
         cta_location: link.dataset.ctaLocation ?? "desconhecido",
-        campaign: getCampaign(),
+        campaign,
         page_path: window.location.pathname,
       });
     }
