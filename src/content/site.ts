@@ -20,8 +20,8 @@ export const site = {
     defaultMessage:
       "Olá! Conheci a Solid Solutions pelo site e gostaria de conversar sobre um projeto.",
   },
-  /** Deixe vazio enquanto não houver um e-mail profissional. */
-  email: "",
+  /** E-mail oficial da marca. Aparece no contato, no rodapé, nos dados estruturados e no llms.txt. */
+  email: "solidsolutionsdigital@gmail.com",
   ogImage: "/og-image.jpg",
   logo: "/brand/solid-solutions-logo.jpg",
   symbol: "/brand/solid-solutions-symbol.jpg",

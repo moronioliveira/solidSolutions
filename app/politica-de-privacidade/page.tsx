@@ -39,7 +39,7 @@ export default function PrivacyPage() {
         </p>
         <h2>Como usamos as informações</h2>
         <p>
-          As informações trocadas pelo WhatsApp são usadas apenas para responder ao seu contato,
+          As informações trocadas pelo WhatsApp ou por e-mail são usadas apenas para responder ao seu contato,
           preparar propostas e prestar os serviços contratados. Não vendemos nem compartilhamos seus
           dados com terceiros para fins de marketing.
         </p>
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
         <p>
           Conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode pedir acesso,
           correção ou exclusão dos seus dados a qualquer momento pelo WhatsApp{" "}
-          {site.whatsapp.display}.
+          {site.whatsapp.display} ou pelo e-mail <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
       </article>
     </>
